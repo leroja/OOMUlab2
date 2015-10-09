@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package grupp4.othello.model;
+package grupp4.othello.view;
 
 /**
  *
  * @author Lennart
  */
-public class temp {
+public class GameBoard {
     
 }

@@ -9,6 +9,6 @@ package grupp4.othello.controller;
  *
  * @author Lennart
  */
-public class temp {
+public class GameManager {
     
 }

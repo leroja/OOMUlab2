@@ -9,6 +9,6 @@ package grupp4.othello.view;
  *
  * @author Lennart
  */
-public class temp {
+public class WinnerDialog {
     
 }
