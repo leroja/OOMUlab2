@@ -11,12 +11,12 @@ package grupp4.othello.model;
  */
 public class ComputerPlayer extends Player {
     
-    public ComputerPlayer(String name, int markorID){
+    public ComputerPlayer(String name, char markorID){
         this.name = name;
         this.markörID = markorID;
     }
 
     @Override
-    public void getMove() {
+    public void getMove(){
     }
 }

@@ -11,7 +11,7 @@ package grupp4.othello.model;
  */
 public abstract class Player {
 protected String name;
-protected int markörID;
+protected char markörID;
 
 public abstract void getMove();
 }
