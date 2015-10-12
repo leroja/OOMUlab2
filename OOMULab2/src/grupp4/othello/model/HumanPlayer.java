@@ -15,6 +15,7 @@ public class HumanPlayer extends Player{
         this.name = name;
         this.markörID = markorID;
     }
+     
     @Override
     public void getMove(){
     }

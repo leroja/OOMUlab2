@@ -14,12 +14,12 @@ import javafx.scene.control.Alert.AlertType;
  */
 public class WinnerDialog {
     
-public void displayWinnerDialog(String player){
-    Alert alert = new Alert(AlertType.INFORMATION);
-    alert.setTitle("Winner!");
-    alert.setHeaderText(null);
-    alert.setContentText("Congratulations! "+player+ " you won the game." );
-    
-    alert.showAndWait();
- } 
+    public void displayWinnerDialog(String player){
+        Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle("Winner!");
+        alert.setHeaderText(null);
+        alert.setContentText("Congratulations! " + player + " you won the game." );
+
+        alert.showAndWait();
+    } 
 }

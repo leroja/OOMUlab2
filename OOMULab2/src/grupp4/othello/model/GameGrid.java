@@ -20,12 +20,12 @@ public class GameGrid {
         grid[3][4]='B';
     }
     
-private boolean availableMove(int x,int y,char markörID){
-        return false;
-}    
+    private boolean availableMove(int x,int y,char markörID){
+            return false;
+    }    
 
-private void uppdateGrid(int x,int y, char markörID){
-    grid[x][y]=markörID;
+    private void uppdateGrid(int x,int y, char markörID){
+        grid[x][y]=markörID;
     }
 }
 

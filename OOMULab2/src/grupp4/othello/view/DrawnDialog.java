@@ -13,12 +13,12 @@ import javafx.scene.control.Alert;
  */
 public class DrawnDialog {
     
-public void DisplayDrawDialog(){
-    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-    alert.setTitle("Tie!");
-    alert.setHeaderText(null);
-    alert.setContentText("The game resulted in a Tie." );
-    
-    alert.showAndWait();
-}
+    public void DisplayDrawDialog(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Tie!");
+        alert.setHeaderText(null);
+        alert.setContentText("The game resulted in a Tie." );
+
+        alert.showAndWait();
+    }
 }
