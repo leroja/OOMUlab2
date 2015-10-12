@@ -29,9 +29,9 @@ public class GameFrame {
     vbox.getChildren().addAll(nyttParti,avsluta);
     vbox.setAlignment(Pos.CENTER);
     vbox.setSpacing(5);
+
     BorderPane border = new BorderPane();
     border.setRight(vbox);
-    border.setCenter(board.);
     
     Scene scene = new Scene(border);
      primaryStage.setScene(scene);
