@@ -5,10 +5,19 @@
  */
 package grupp4.othello.view;
 
+import javafx.scene.layout.GridPane;
+
 /**
  *
  * @author Lennart
  */
 public class GameBoard {
+    GridPane grid;
     
+    
+    public GridPane getGridPane(){
+        
+        
+        return grid;
+    }
 }

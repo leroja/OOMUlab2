@@ -14,11 +14,11 @@ import javafx.scene.control.Alert;
 public class InvalidMoveDialog {
     
     public void DisplayInvalidMoveDialog(){
-     Alert alert = new Alert(Alert.AlertType.ERROR);
-    alert.setTitle("Invalid Move!!!");
-    alert.setHeaderText(null);
-    alert.setContentText("Invalid move. Pleas redo you'r move." );
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Invalid Move!!!");
+        alert.setHeaderText(null);
+        alert.setContentText("Invalid move. Please redo your move." );
     
-    alert.showAndWait();
+        alert.showAndWait();
  } 
 }
