@@ -6,6 +6,7 @@
 package grupp4.othello.view;
 
 import javafx.geometry.Pos;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -29,9 +30,10 @@ public class GameFrame {
     vbox.getChildren().addAll(nyttParti,avsluta);
     vbox.setAlignment(Pos.CENTER);
     vbox.setSpacing(5);
+    vbox.setPadding(new Insets(10));
     BorderPane border = new BorderPane();
     border.setRight(vbox);
-    border.setCenter(board.);
+    border.setCenter(board.getGridPane());
     
     Scene scene = new Scene(border);
      primaryStage.setScene(scene);
