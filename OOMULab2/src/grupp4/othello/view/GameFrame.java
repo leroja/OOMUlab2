@@ -5,10 +5,16 @@
  */
 package grupp4.othello.view;
 
+import javafx.scene.control.Button;
+
 /**
  *
  * @author Lennart
  */
 public class GameFrame {
     
+    public void displayGameFrame(){
+    Button nyttParti = new Button("Nytt parti");
+    
+    }
 }
