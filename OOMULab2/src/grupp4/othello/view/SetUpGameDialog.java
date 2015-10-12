@@ -5,6 +5,7 @@
  */
 package grupp4.othello.view;
 
+import javafx.scene.control.Alert;
 import javafx.geometry.Pos;
 import javafx.scene.layout.VBox;
 

@@ -6,6 +6,8 @@ package grupp4.othello;
  * and open the template in the editor.
  */
 
+import grupp4.othello.model.*;
+import grupp4.othello.view.*;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -29,7 +31,6 @@ public class Othello extends Application{
     
     @Override
     public void start(Stage stage) throws Exception {
-        
     }
     
 }

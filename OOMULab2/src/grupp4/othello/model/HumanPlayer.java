@@ -11,7 +11,7 @@ package grupp4.othello.model;
  */
 public class HumanPlayer extends Player{
 
-     public HumanPlayer(String name, int markorID){
+     public HumanPlayer(String name, char markorID){
         this.name = name;
         this.markörID = markorID;
     }
