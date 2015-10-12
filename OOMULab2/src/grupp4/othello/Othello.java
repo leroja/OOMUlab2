@@ -7,6 +7,7 @@ package grupp4.othello;
  */
 
 import grupp4.othello.model.*;
+import grupp4.othello.view.*;
 import javafx.application.Application;
 import javafx.stage.Stage;
 

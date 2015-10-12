@@ -9,16 +9,16 @@ import javafx.scene.control.Alert;
 
 /**
  *
- * @author Lennart
+ * @author alexander
  */
-public class DrawnDialog {
+public class InvalidMoveDialog {
     
-public void DisplayDrawDialog(){
-    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-    alert.setTitle("Tie!");
+    public void DisplayInvalidMoveDialog(){
+     Alert alert = new Alert(Alert.AlertType.ERROR);
+    alert.setTitle("Invalid Move!!!");
     alert.setHeaderText(null);
-    alert.setContentText("The game resulted in a Tie." );
+    alert.setContentText("Invalid move. Pleas redo you'r move." );
     
     alert.showAndWait();
-}
+ } 
 }

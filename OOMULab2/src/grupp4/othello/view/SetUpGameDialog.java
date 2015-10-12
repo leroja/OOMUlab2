@@ -5,6 +5,8 @@
  */
 package grupp4.othello.view;
 
+import javafx.scene.control.Alert;
+
 /**
  *
  * @author Lennart
