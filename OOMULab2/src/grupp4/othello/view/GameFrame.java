@@ -5,7 +5,13 @@
  */
 package grupp4.othello.view;
 
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 /**
  *
@@ -13,8 +19,27 @@ import javafx.scene.control.Button;
  */
 public class GameFrame {
     
-    public void displayGameFrame(){
+    public void displayGameFrame(Stage primaryStage){
     Button nyttParti = new Button("Nytt parti");
+    GameBoard board = new GameBoard();
+    nyttParti.setPrefSize(70,35);
+    Button avsluta = new Button("Avsluta");
+    avsluta.setPrefSize(70, 35);
+    VBox vbox = new VBox();
+    vbox.getChildren().addAll(nyttParti,avsluta);
+    vbox.setAlignment(Pos.CENTER);
+    vbox.setSpacing(5);
+    BorderPane border = new BorderPane();
+    border.setRight(vbox);
+    border.setCenter(board.);
+    
+    Scene scene = new Scene(border);
+     primaryStage.setScene(scene);
+       primaryStage.getIcons().add(new Image("file:\\C:\\Users\\alexander\\Documents\\Reversi\\reversi_icon.png"));
+       primaryStage.setTitle("Othello");
+       primaryStage.show();
+    }
+    
     
     }
-}
+
