@@ -5,10 +5,15 @@
  */
 package grupp4.othello.controller;
 
+import grupp4.othello.model.Player;
+
 /**
  *
  * @author Lennart
  */
+
 public class GameManager {
+
+    
     
 }

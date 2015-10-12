@@ -9,6 +9,10 @@ package grupp4.othello.model.exception;
  *
  * @author alexander
  */
-public class InvalidMoveException {
+public class InvalidMoveException extends Exception{
+    
+    public InvalidMoveException(){
+        
+    }
     
 }

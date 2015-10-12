@@ -5,10 +5,18 @@
  */
 package grupp4.othello.view;
 
+import javafx.geometry.Pos;
+import javafx.scene.layout.VBox;
+
+
+
 /**
  *
  * @author Lennart
  */
 public class SetUpGameDialog {
+    //2 radio buttons for each player
+    //1 text field for each player
+    
     
 }
