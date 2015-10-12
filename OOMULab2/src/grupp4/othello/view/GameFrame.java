@@ -10,6 +10,7 @@ import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -21,25 +22,26 @@ import javafx.stage.Stage;
 public class GameFrame {
     
     public void displayGameFrame(Stage primaryStage){
-    Button nyttParti = new Button("Nytt parti");
-    GameBoard board = new GameBoard();
-    nyttParti.setPrefSize(70,35);
-    Button avsluta = new Button("Avsluta");
-    avsluta.setPrefSize(70, 35);
-    VBox vbox = new VBox();
-    vbox.getChildren().addAll(nyttParti,avsluta);
-    vbox.setAlignment(Pos.CENTER);
-    vbox.setSpacing(5);
-    vbox.setPadding(new Insets(10));
-    BorderPane border = new BorderPane();
-    border.setRight(vbox);
-    border.setCenter(board.getGridPane());
+        Button nyttParti = new Button("Nytt parti");
+        GameBoard board = new GameBoard();
+        nyttParti.setPrefSize(70,35);
+        Button avsluta = new Button("Avsluta");
+        avsluta.setPrefSize(70, 35);
+        VBox vbox = new VBox();
+        vbox.getChildren().addAll(nyttParti,avsluta);
+        vbox.setAlignment(Pos.CENTER);
+        vbox.setSpacing(5);
+        vbox.setPadding(new Insets(10));
+        BorderPane border = new BorderPane();
+        border.setRight(vbox);
+        border.setCenter(board.getGridPane());
     
-    Scene scene = new Scene(border);
-     primaryStage.setScene(scene);
-       primaryStage.getIcons().add(new Image("file:\\C:\\Users\\alexander\\Documents\\Reversi\\reversi_icon.png"));
-       primaryStage.setTitle("Othello");
-       primaryStage.show();
+    
+        Scene scene = new Scene(border);
+        primaryStage.setScene(scene);
+        primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/resources/reversi_icon.png")));
+        primaryStage.setTitle("Othello");
+        primaryStage.show();
     }
     
     
