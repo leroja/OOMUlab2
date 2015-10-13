@@ -14,6 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -28,8 +29,33 @@ public class GameFrame {
         BorderPane border = new BorderPane();
         VBox vbox;
         vbox = getVBox();
-                
-     
+            
+        
+        GridPane letters = new GridPane();
+        GridPane numbers = new GridPane();
+        letters.setHgap(22);
+        letters.add(new Label("A"),1,0);
+        letters.add(new Label("B"),3,0);
+        letters.add(new Label("C"),5,0);
+        letters.add(new Label("D"),7,0);
+        letters.add(new Label("E"),9,0);
+        letters.add(new Label("F"),11,0);
+        letters.add(new Label("G"),13,0);
+        letters.add(new Label("H"),15,0);
+        
+        numbers.setVgap(17);
+        numbers.add(new Label("1"),0,1);
+        numbers.add(new Label("2"),0,3);
+        numbers.add(new Label("3"),0,5);
+        numbers.add(new Label("4"),0,7);
+        numbers.add(new Label("5"),0,9);
+        numbers.add(new Label("6"),0,11);
+        numbers.add(new Label("7"),0,13);
+        numbers.add(new Label("8"),0,15);
+        
+        
+        border.setTop(letters);
+        border.setLeft(numbers);
         border.setRight(vbox);
         border.setCenter(board.getGridPane());
         Label currentPlayer = new Label("Temp");
