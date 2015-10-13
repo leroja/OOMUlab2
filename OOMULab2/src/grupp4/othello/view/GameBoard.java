@@ -5,6 +5,8 @@
  */
 package grupp4.othello.view;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
@@ -43,12 +45,17 @@ public class GameBoard {
         
         grid.setBackground(new Background(backImage));
         
+        
+        
+        
     }
     
     
     public GridPane getGridPane(){
-        
-        
         return grid;
     }
 }
+    
+    
+    
+
