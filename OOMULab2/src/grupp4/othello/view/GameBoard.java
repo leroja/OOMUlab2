@@ -92,8 +92,10 @@ public class GameBoard {
     
     
     public GridPane getGridPane(){
-        
-        
         return grid;
     }
 }
+    
+    
+    
+

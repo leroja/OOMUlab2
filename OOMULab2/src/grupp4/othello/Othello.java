@@ -8,9 +8,12 @@ package grupp4.othello;
  * and open the template in the editor.
  */
 
+import grupp4.othello.model.GameGrid;
 import grupp4.othello.view.*;
+import java.util.ArrayList;
 import javafx.application.Application;
 import javafx.stage.Stage;
+import javafx.util.Pair;
 
 /**
  *
@@ -21,8 +24,18 @@ public class Othello extends Application{
     
     @Override
     public void start(Stage stage) throws Exception {
-        GameFrame game = new GameFrame();
-        game.displayGameFrame(stage);
+        ArrayList<Pair<Integer,Integer>> arr = new ArrayList<Pair<Integer,Integer>>();
+        GameGrid grid = new GameGrid();
+        arr=grid.getAvailableMoves('B');
+        for (int i=0;i<arr.size();i++){
+            System.out.println(arr.get(i));
+        }
+       
+//        
+//        
+       
+//        GameFrame game = new GameFrame();
+//        game.displayGameFrame(stage);
     }
     
 }

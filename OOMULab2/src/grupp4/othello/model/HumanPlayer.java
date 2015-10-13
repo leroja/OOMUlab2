@@ -5,6 +5,9 @@
  */
 package grupp4.othello.model;
 
+import javafx.scene.control.Button;
+import javafx.scene.text.Text;
+
 /**
  *
  * @author alexander
@@ -18,5 +21,7 @@ public class HumanPlayer extends Player{
      
     @Override
     public void getMove(){
-    }
+        
+    }      
 }
+
