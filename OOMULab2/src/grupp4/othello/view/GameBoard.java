@@ -52,9 +52,11 @@ public class GameBoard {
         BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
         
         grid.setBackground(new Background(backImage));
+            
+        grid.setFocusTraversable(true);
+        grid.requestFocus();
         
         grid.setOnMouseClicked(new EventHandler<MouseEvent>(){
-
             @Override
             public void handle(MouseEvent e) {
                 for(Node node: grid.getChildren()){
@@ -64,28 +66,25 @@ public class GameBoard {
                         }
                     }
                 }
-                
             }
-            
         });
         
         grid.setOnKeyPressed(new EventHandler<KeyEvent>(){
             
             @Override
             public void handle(KeyEvent event) {
-                System.out.println("test");
-                if((event.getCode() == KeyCode.A) && (event.getCode() == KeyCode.NUMPAD1)) {
-                    System.out.println("A1 pressed");
-                } 
+                
+                
             };
         });
         
-        
-        this.grid.addEventHandler(KeyEvent.KEY_RELEASED, new EventHandler<KeyEvent>() {
-        @Override
-        public void handle(KeyEvent event) {
-            System.out.println("test"); 
-        }
+        grid.setOnKeyReleased(new EventHandler<KeyEvent>(){
+
+            @Override
+            public void handle(KeyEvent event) {
+            
+            }
+            
         });
         
         
