@@ -11,6 +11,7 @@ import javafx.geometry.Pos;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
@@ -31,12 +32,16 @@ public class GameFrame {
      
         border.setRight(vbox);
         border.setCenter(board.getGridPane());
+        Label currentPlayer = new Label("Temp");
+        border.setBottom(currentPlayer);
     
     
         Scene scene = new Scene(border);
         primaryStage.setScene(scene);
         primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/resources/reversi_icon.png")));
         primaryStage.setTitle("Othello");
+        primaryStage.setResizable(false);
+        primaryStage.sizeToScene();
         primaryStage.show();
     }
     
