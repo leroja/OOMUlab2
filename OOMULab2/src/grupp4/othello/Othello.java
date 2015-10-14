@@ -44,7 +44,6 @@ public class Othello extends Application{
 //            System.out.println(row.getRow() + "," + row.getColumn());
 //        }
        
-
     }
 }
         
