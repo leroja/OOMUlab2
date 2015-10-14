@@ -45,15 +45,6 @@ public class Othello extends Application{
 //        }
        
 
-//        ComputerPlayer player = new ComputerPlayer("alle",'B' );
-//        int i =0;
-//        while (i < 10){
-//                 GridRow row = player.getMove();
-//                 System.out.println(row.getRow() + "," + row.getColumn());
-//                i++;
-//            }
-//    }
-
     }
 }
         
