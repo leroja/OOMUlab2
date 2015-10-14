@@ -27,32 +27,8 @@ public class Othello extends Application{
     @Override
     public void start(Stage stage) throws Exception{
         
-//        GameGrid grid = new GameGrid();
-//        grid.printGameGrid();
-//        grid.uppdateWithMove(2,3,'B');
-//        System.out.println("\n");
-//        grid.printGameGrid();
-//        System.out.println("\n");
-//        grid.uppdateWithMove(4, 2, 'W');
-//        grid.printGameGrid();
-        
-//     ArrayList<GridRow> arr = new ArrayList<>();
-//        GameGrid grid = new GameGrid();
-//        arr=grid.getAvailableMoves('B');
-//        for (int i=0;i<arr.size();i++){
-//            GridRow row = arr.get(i);
-//            System.out.println(row.getRow() + "," + row.getColumn());
-//        }
-       
-//        ComputerPlayer player = new ComputerPlayer("alle",'B' );
-//        int i =0;
-//        while (i < 10){
-//                 GridRow row = player.getMove();
-//                 System.out.println(row.getRow() + "," + row.getColumn());
-//                i++;
-//            }
-//    }
     }
+}
 }
     
 

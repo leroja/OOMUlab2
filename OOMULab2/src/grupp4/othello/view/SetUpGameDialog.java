@@ -18,8 +18,6 @@ import javafx.scene.control.TextInputDialog;
  * @author Lennart
  */
 public class SetUpGameDialog {
-    //2 radio buttons for each player
-    //1 text field for each player
     
     public String player1Name(){
         

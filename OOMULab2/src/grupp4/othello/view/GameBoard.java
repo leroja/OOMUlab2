@@ -46,15 +46,18 @@ public class GameBoard {
                 GridPane.setMargin(ci,new Insets(5));
             }
         }
+        setStartingPos();
         
         BackgroundImage backImage = new BackgroundImage(new Image(getClass().getResourceAsStream(
         "/resources/reversi_background.jpg")),BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, 
         BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
         
         grid.setBackground(new Background(backImage));
+            
+        grid.setFocusTraversable(true);
+        grid.requestFocus();
         
         grid.setOnMouseClicked(new EventHandler<MouseEvent>(){
-
             @Override
             public void handle(MouseEvent e) {
                 for(Node node: grid.getChildren()){
@@ -64,28 +67,25 @@ public class GameBoard {
                         }
                     }
                 }
-                
             }
-            
         });
         
         grid.setOnKeyPressed(new EventHandler<KeyEvent>(){
             
             @Override
             public void handle(KeyEvent event) {
-                System.out.println("test");
-                if((event.getCode() == KeyCode.A) && (event.getCode() == KeyCode.NUMPAD1)) {
-                    System.out.println("A1 pressed");
-                } 
+                
+                
             };
         });
         
-        
-        this.grid.addEventHandler(KeyEvent.KEY_RELEASED, new EventHandler<KeyEvent>() {
-        @Override
-        public void handle(KeyEvent event) {
-            System.out.println("test"); 
-        }
+        grid.setOnKeyReleased(new EventHandler<KeyEvent>(){
+
+            @Override
+            public void handle(KeyEvent event) {
+            
+            }
+            
         });
         
         
@@ -94,6 +94,23 @@ public class GameBoard {
     
     public GridPane getGridPane(){
         return grid;
+    }
+    
+    public void setStartingPos(){
+        
+        Circle b1 = new Circle(20,20,20,Color.BLACK);
+        grid.add(b1, 4, 3);
+        GridPane.setMargin(b1,new Insets(5));
+        Circle b2 = new Circle(20,20,20,Color.BLACK);
+        grid.add(b2, 3, 4);
+        GridPane.setMargin(b2,new Insets(5));
+        
+        Circle w1 = new Circle(20,20,20,Color.WHITE);
+        grid.add(w1, 4, 4);
+        GridPane.setMargin(w1,new Insets(5));
+        Circle w2 = new Circle(20,20,20,Color.WHITE);
+        grid.add(w2, 3, 3);
+        GridPane.setMargin(w2,new Insets(5));
     }
 }
 

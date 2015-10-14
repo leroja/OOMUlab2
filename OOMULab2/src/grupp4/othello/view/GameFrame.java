@@ -15,6 +15,8 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -27,38 +29,19 @@ public class GameFrame {
     public void displayGameFrame(Stage primaryStage){
         GameBoard board = new GameBoard();
         BorderPane border = new BorderPane();
-        VBox vbox;
-        vbox = getVBox();
-            
-        
-        GridPane letters = new GridPane();
-        GridPane numbers = new GridPane();
-        letters.setHgap(22);
-        letters.add(new Label("A"),1,0);
-        letters.add(new Label("B"),3,0);
-        letters.add(new Label("C"),5,0);
-        letters.add(new Label("D"),7,0);
-        letters.add(new Label("E"),9,0);
-        letters.add(new Label("F"),11,0);
-        letters.add(new Label("G"),13,0);
-        letters.add(new Label("H"),15,0);
-        
-        numbers.setVgap(17);
-        numbers.add(new Label("1"),0,1);
-        numbers.add(new Label("2"),0,3);
-        numbers.add(new Label("3"),0,5);
-        numbers.add(new Label("4"),0,7);
-        numbers.add(new Label("5"),0,9);
-        numbers.add(new Label("6"),0,11);
-        numbers.add(new Label("7"),0,13);
-        numbers.add(new Label("8"),0,15);
+        VBox buttonColumn, nbrCol;
+        HBox hBox = getLetterRow();
+        buttonColumn = getVBox();
+        nbrCol = getNumberColumn();
         
         
-        border.setTop(letters);
-        border.setLeft(numbers);
-        border.setRight(vbox);
+        Label currentPlayer = new Label("Temp");    
+        
+        
+        border.setTop(hBox);
+        border.setLeft(nbrCol);
+        border.setRight(buttonColumn);
         border.setCenter(board.getGridPane());
-        Label currentPlayer = new Label("Temp");
         border.setBottom(currentPlayer);
     
     
@@ -69,6 +52,32 @@ public class GameFrame {
         primaryStage.setResizable(false);
         primaryStage.sizeToScene();
         primaryStage.show();
+    }
+    
+    public HBox getLetterRow(){
+        HBox hBox= new HBox();
+        
+        for(char i= 'A';i < 'I';i++){
+            StackPane square = new StackPane();
+            square.setMinSize(50, 10);
+            
+            square.getChildren().add(new Label("" + i));  
+            hBox.getChildren().add(square);
+        }
+        return hBox;
+    }
+    
+    public VBox getNumberColumn(){
+        VBox vvBox = new VBox();
+        
+        for(int i= 0;i<8;i++){
+            StackPane square = new StackPane();
+            square.setMinSize(10, 50);
+            
+            square.getChildren().add(new Label("" + i));  
+            vvBox.getChildren().add(square);
+        }
+        return vvBox;
     }
     
     
@@ -95,9 +104,9 @@ public class GameFrame {
     public class  ExitEventHandler implements EventHandler<ActionEvent> {
   
         @Override
-    public void handle(ActionEvent event) {
-        System.exit(0);
-    }
+        public void handle(ActionEvent event) {
+            System.exit(0);
+        }
     }
     public class NewGameEventHandler implements EventHandler<ActionEvent>{
 
