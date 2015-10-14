@@ -24,18 +24,17 @@ public class Othello extends Application{
     
     @Override
     public void start(Stage stage) throws Exception {
-        ArrayList<Pair<Integer,Integer>> arr = new ArrayList<Pair<Integer,Integer>>();
-        GameGrid grid = new GameGrid();
-        arr=grid.getAvailableMoves('B');
-        for (int i=0;i<arr.size();i++){
-            System.out.println(arr.get(i));
-        }
+        
+//        ArrayList<Pair<Integer,Integer>> arr = new ArrayList<Pair<Integer,Integer>>();
+//        GameGrid grid = new GameGrid();
+//        arr=grid.getAvailableMoves('B');
+//        for (int i=0;i<arr.size();i++){
+//            System.out.println(arr.get(i));
+//        }
        
-//        
-//        
        
-//        GameFrame game = new GameFrame();
-//        game.displayGameFrame(stage);
+        GameFrame game = new GameFrame();
+        game.displayGameFrame(stage);
     }
     
 }
