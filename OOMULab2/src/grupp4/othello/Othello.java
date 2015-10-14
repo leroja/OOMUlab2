@@ -26,7 +26,6 @@ public class Othello extends Application{
     
     @Override
     public void start(Stage stage) throws Exception{
-
+        
     }
 }
-
