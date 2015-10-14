@@ -26,17 +26,7 @@ public class Othello extends Application{
     
     @Override
     public void start(Stage stage) throws Exception{
-        
-    }
-}
-}
-    
-
-        
-//        
-//        
-//       
-   GameFrame game = new GameFrame();
+        GameFrame game = new GameFrame();
     game.displayGameFrame(stage);
     }
 }
