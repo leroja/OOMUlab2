@@ -6,13 +6,12 @@
 package grupp4.othello.model;
 
 import java.util.ArrayList;
-import javafx.util.Pair;
 
 /**
  *
  * @author alexander
  */
-public class GameGrid {
+public class GameGrid{
     char[][] grid = new char[8][8];
     
     
@@ -47,12 +46,12 @@ public class GameGrid {
      }
      
    
-    public ArrayList<Pair<Integer,Integer>> getAvailableMoves(char markörID){
-        ArrayList<Pair<Integer,Integer>> arr = new ArrayList<Pair<Integer,Integer>>();
+    public ArrayList<GridRow> getAvailableMoves(char markörID){
+        ArrayList<GridRow> arr = new ArrayList<>();
         for(int i = 0;i < 8;i++){
             for(int j =0; j < 8;j++){
                 if(availableMove(i,j,markörID)){
-                    Pair pair = new Pair<>(i,j);
+                    GridRow pair = new GridRow(i,j);
                     arr.add(pair);
                 }   
             }
@@ -62,7 +61,7 @@ public class GameGrid {
     
     
     
-    private boolean availableMove(int x,int y,char markörID){
+    public boolean availableMove(int x,int y,char markörID){
         if (grid[x][y]!= 0) return (false);
         if (moveCheak(x,y,1,0,markörID))return true;
         else if (moveCheak(x,y,1,1,markörID))return true;
@@ -75,7 +74,7 @@ public class GameGrid {
         else return (false);
     }    
 
-    public void uppdateGrid(int x,int y, char markörID){
+    private void uppdateGrid(int x,int y, char markörID){
         grid[x][y]=markörID;
     }
     
@@ -89,8 +88,66 @@ public class GameGrid {
        }
        return (false);
     }
+
+
+
+public void uppdateWithMove(int row, int colum,char markörID){
+    uppdateGrid(row,colum,markörID);
+    if (moveCheak(row,colum,1,0,markörID)){
+        while(grid[row+1][colum] != markörID && grid[row][colum]!= 0){
+                grid[row+1][colum] = markörID;
+                row = row +1;
+            }
+    }
+        else if (moveCheak(row,colum,1,1,markörID)){
+            while(grid[row+1][colum+1] != markörID && grid[row][colum]!= 0){
+                grid[row+1][colum+1] = markörID;
+                row = row +1;
+            }
+            
+        }
+        else if (moveCheak(row,colum,0,1,markörID)){
+             while(grid[row][colum+1] != markörID && grid[row][colum]!= 0){
+                 System.out.println("hej \n");
+                grid[row][colum+1] = markörID;
+                colum = colum +1;
+            }
+        }
+        else if (moveCheak(row,colum,-1,-1,markörID)){
+             while(grid[row-1][colum-1] != markörID && grid[row][colum]!= 0){
+                grid[row-1][colum-1] = markörID;
+                row = row -1;
+                colum = colum -1;
+            }
+        }
+        else if (moveCheak(row,colum,-1,0,markörID)){
+             while(grid[row - 1][colum] != markörID && grid[row][colum]!= 0){
+                grid[row - 1][colum] = markörID;
+                row = row- 1;
+            }
+            
+        }
+        else if (moveCheak(row,colum,0,-1,markörID)){
+             while(grid[row][colum-1] != markörID && grid[row][colum]!= 0){
+                grid[row][colum-1] = markörID;
+                colum = colum -1;
+            }
+            
+        }
+        else if (moveCheak(row,colum,-1,1,markörID)){
+             while(grid[row-1][colum+1] != markörID && grid[row][colum]!= 0){
+                grid[row-1][colum+1] = markörID;
+                row = row -1;
+                colum = colum +1;
+            }
+        }
+        else if (moveCheak(row,colum,1,-1,markörID)){
+             while(grid[row+1][colum-1] != markörID && grid[row][colum]!= 0){
+                grid[row+1][colum-1] = markörID;
+                row = row +1;
+                colum = colum -1;
+            }
+        }
+    }
 }
-
-
-
 

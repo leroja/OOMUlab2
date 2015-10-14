@@ -5,6 +5,10 @@
  */
 package grupp4.othello.model;
 
+import java.util.ArrayList;
+import java.util.Random;
+import javafx.util.Pair;
+
 /**
  *
  * @author alexander
@@ -17,6 +21,14 @@ public class ComputerPlayer extends Player {
     }
 
     @Override
-    public void getMove(){
+    public GridRow getMove(){
+        GameGrid grid = new GameGrid();
+        Random rand = new Random();
+        ArrayList<GridRow> arr = new ArrayList<>();
+        arr = grid.getAvailableMoves(this.markörID);
+        int size = arr.size();
+        int drag = rand.nextInt(size);
+        return (arr.get(drag));
+        
     }
 }
