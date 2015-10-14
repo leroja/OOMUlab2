@@ -28,6 +28,11 @@ public class Othello extends Application{
     public void start(Stage stage) throws Exception{
         GameFrame game = new GameFrame();
         game.displayGameFrame(stage);
+        GameGrid grid = new GameGrid();
+        grid.printGameGrid();
+        grid.uppdateWithMove(2, 3, 'B');
+        grid.printGameGrid();
+        
         
         
     }

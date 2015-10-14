@@ -105,7 +105,7 @@ public class GameBoard {
     
     public void placeMarker(int row, int column, Color col){
         Circle w2 = new Circle(20,20,20,col);
-        grid.add(w2, row, column);
+        grid.add(w2,column,row);
         GridPane.setMargin(w2,new Insets(5));
     }
     
@@ -113,10 +113,10 @@ public class GameBoard {
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
                 if (grid[i][j]== 'B'){
-                    
+                placeMarker(i,j,Color.BLACK);
                 }
                 else if (grid[i][j]== 'W'){
-                    
+                placeMarker(i,j,Color.WHITE); 
                 }
 
             }
