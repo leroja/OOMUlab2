@@ -96,7 +96,14 @@ public class GameBoard {
         return grid;
     }
 }
-    
+
+
+
+    public void onUppdateInGameGrid(char[][] grid){
+        
+
+    }
+}
     
     
 

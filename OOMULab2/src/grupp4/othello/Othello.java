@@ -54,12 +54,14 @@ public class Othello extends Application{
 //    }
     }
 }
-        
-        
+    
+
         
 //        
 //        
 //       
-//      GameFrame game = new GameFrame();
-//       game.displayGameFrame(stage);
+   GameFrame game = new GameFrame();
+    game.displayGameFrame(stage);
+    }
+}
    

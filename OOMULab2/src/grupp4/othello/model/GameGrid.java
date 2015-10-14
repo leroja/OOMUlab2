@@ -148,6 +148,7 @@ public void uppdateWithMove(int row, int colum,char markörID){
                 colum = colum -1;
             }
         }
+    // NotifyGameBoard(grid);
     }
 }
 
