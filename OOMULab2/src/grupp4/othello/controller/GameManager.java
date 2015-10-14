@@ -5,6 +5,8 @@
  */
 package grupp4.othello.controller;
 
+import grupp4.othello.view.*;
+
 /**
  *
  * @author Lennart
@@ -14,4 +16,9 @@ public class GameManager {
 
     
     
+    
+ public void notifyGameBoard(char[][] grid){
+     GameBoard board = new GameBoard();
+     board.onUppdateInGameGrid(grid);
+ }
 }

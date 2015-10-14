@@ -148,6 +148,7 @@ public class GameGrid{
                 colum = colum -1;
             }
         }
+    // NotifyGameBoard(grid);
     }
 }
 

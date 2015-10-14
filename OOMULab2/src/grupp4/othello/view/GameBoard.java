@@ -108,8 +108,21 @@ public class GameBoard {
         grid.add(w2, row, column);
         GridPane.setMargin(w2,new Insets(5));
     }
-}
     
+    public void onUppdateInGameGrid(char[][] grid){
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                if (grid[i][j]== 'B'){
+                    
+                }
+                else if (grid[i][j]== 'W'){
+                    
+                }
+
+            }
+        }
+    }
+}
 class WhiteMarker extends Marker{
     
     

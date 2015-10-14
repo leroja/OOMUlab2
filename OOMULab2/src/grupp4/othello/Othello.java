@@ -32,3 +32,4 @@ public class Othello extends Application{
         
     }
 }
+   
