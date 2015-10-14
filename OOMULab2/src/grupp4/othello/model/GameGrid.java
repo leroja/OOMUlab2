@@ -16,7 +16,7 @@ public class GameGrid{
     
     
     public GameGrid(){
-     setStartPositions();
+        setStartPositions();
     }
     
     private void setStartPositions(){
@@ -63,14 +63,14 @@ public class GameGrid{
     
     public boolean availableMove(int x,int y,char markörID){
         if (grid[x][y]!= 0) return (false);
-        if (moveCheak(x,y,1,0,markörID))return true;
-        else if (moveCheak(x,y,1,1,markörID))return true;
-        else if (moveCheak(x,y,0,1,markörID))return true;
-        else if (moveCheak(x,y,-1,-1,markörID))return true;
-        else if (moveCheak(x,y,-1,0,markörID))return true;
-        else if (moveCheak(x,y,0,-1,markörID))return true;
-        else if (moveCheak(x,y,-1,1,markörID))return true;
-        else if (moveCheak(x,y,1,-1,markörID))return true;
+        if (moveCheck(x,y,1,0,markörID))return true;
+        else if (moveCheck(x,y,1,1,markörID))return true;
+        else if (moveCheck(x,y,0,1,markörID))return true;
+        else if (moveCheck(x,y,-1,-1,markörID))return true;
+        else if (moveCheck(x,y,-1,0,markörID))return true;
+        else if (moveCheck(x,y,0,-1,markörID))return true;
+        else if (moveCheck(x,y,-1,1,markörID))return true;
+        else if (moveCheck(x,y,1,-1,markörID))return true;
         else return (false);
     }    
 
@@ -78,70 +78,70 @@ public class GameGrid{
         grid[x][y]=markörID;
     }
     
-    private boolean moveCheak(int x, int y, int dx, int dy, char markörID){
-       int i;
-       int j;
-      for (i = x + dx, j =y + dy; i >= 0 && i < 8 && j>=0 && j< 8 ; i = i + dx, j = j + dy){
+    private boolean moveCheck(int x, int y, int dx, int dy, char markörID){
+        int i;
+        int j;
+        for (i = x + dx, j =y + dy; i >= 0 && i < 8 && j>=0 && j< 8 ; i = i + dx, j = j + dy){
             if(i == x + dx && j == y + dy && grid[i][j] == markörID) return false;
             if( grid[i][j] == 0) return (false);
             if (grid[i][j] == markörID) return (true);
-       }
-       return (false);
+        }
+        return (false);
     }
 
 
 
-public void uppdateWithMove(int row, int colum,char markörID){
-    uppdateGrid(row,colum,markörID);
-    if (moveCheak(row,colum,1,0,markörID)){
-        while(grid[row+1][colum] != markörID && grid[row][colum]!= 0){
+    public void uppdateWithMove(int row, int colum,char markörID){
+        uppdateGrid(row,colum,markörID);
+        if (moveCheck(row,colum,1,0,markörID)){
+            while(grid[row+1][colum] != markörID && grid[row][colum]!= 0){
                 grid[row+1][colum] = markörID;
                 row = row +1;
             }
-    }
-        else if (moveCheak(row,colum,1,1,markörID)){
+        }
+        else if (moveCheck(row,colum,1,1,markörID)){
             while(grid[row+1][colum+1] != markörID && grid[row][colum]!= 0){
                 grid[row+1][colum+1] = markörID;
                 row = row +1;
             }
             
         }
-        else if (moveCheak(row,colum,0,1,markörID)){
+        else if (moveCheck(row,colum,0,1,markörID)){
              while(grid[row][colum+1] != markörID && grid[row][colum]!= 0){
                  System.out.println("hej \n");
                 grid[row][colum+1] = markörID;
                 colum = colum +1;
             }
         }
-        else if (moveCheak(row,colum,-1,-1,markörID)){
+        else if (moveCheck(row,colum,-1,-1,markörID)){
              while(grid[row-1][colum-1] != markörID && grid[row][colum]!= 0){
                 grid[row-1][colum-1] = markörID;
                 row = row -1;
                 colum = colum -1;
             }
         }
-        else if (moveCheak(row,colum,-1,0,markörID)){
+        else if (moveCheck(row,colum,-1,0,markörID)){
              while(grid[row - 1][colum] != markörID && grid[row][colum]!= 0){
                 grid[row - 1][colum] = markörID;
                 row = row- 1;
             }
             
         }
-        else if (moveCheak(row,colum,0,-1,markörID)){
+        else if (moveCheck(row,colum,0,-1,markörID)){
              while(grid[row][colum-1] != markörID && grid[row][colum]!= 0){
                 grid[row][colum-1] = markörID;
                 colum = colum -1;
             }
             
         }
-        else if (moveCheak(row,colum,-1,1,markörID)){
+        else if (moveCheck(row,colum,-1,1,markörID)){
              while(grid[row-1][colum+1] != markörID && grid[row][colum]!= 0){
                 grid[row-1][colum+1] = markörID;
                 row = row -1;
                 colum = colum +1;
             }
         }
-        else if (moveCheak(row,colum,1,-1,markörID)){
+        else if (moveCheck(row,colum,1,-1,markörID)){
              while(grid[row+1][colum-1] != markörID && grid[row][colum]!= 0){
                 grid[row+1][colum-1] = markörID;
                 row = row +1;

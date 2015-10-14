@@ -34,7 +34,6 @@ public class GameFrame {
         buttonColumn = getVBox();
         nbrCol = getNumberColumn();
         
-        
         Label currentPlayer = new Label("Temp");    
         
         

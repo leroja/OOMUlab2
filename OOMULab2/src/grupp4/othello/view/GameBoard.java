@@ -97,23 +97,32 @@ public class GameBoard {
     }
     
     public void setStartingPos(){
-        
-        Circle b1 = new Circle(20,20,20,Color.BLACK);
-        grid.add(b1, 4, 3);
-        GridPane.setMargin(b1,new Insets(5));
-        Circle b2 = new Circle(20,20,20,Color.BLACK);
-        grid.add(b2, 3, 4);
-        GridPane.setMargin(b2,new Insets(5));
-        
-        Circle w1 = new Circle(20,20,20,Color.WHITE);
-        grid.add(w1, 4, 4);
-        GridPane.setMargin(w1,new Insets(5));
-        Circle w2 = new Circle(20,20,20,Color.WHITE);
-        grid.add(w2, 3, 3);
+        placeMarker(4,3,Color.BLACK);
+        placeMarker(3,4,Color.BLACK);
+        placeMarker(3,3,Color.WHITE);
+        placeMarker(4,4,Color.WHITE);
+    }
+    
+    public void placeMarker(int row, int column, Color col){
+        Circle w2 = new Circle(20,20,20,col);
+        grid.add(w2, row, column);
         GridPane.setMargin(w2,new Insets(5));
     }
 }
     
+class WhiteMarker extends Marker{
     
+    
+    
+} 
+class BlackMarker extends Marker{
     
 
+}
+
+abstract class Marker{ 
+}
+    
+class Tile{
+    
+} 

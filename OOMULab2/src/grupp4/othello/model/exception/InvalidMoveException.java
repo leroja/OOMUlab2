@@ -12,7 +12,7 @@ package grupp4.othello.model.exception;
 public class InvalidMoveException extends Exception{
     
     public InvalidMoveException(){
-        
+        super("InvalidMoveException");
     }
     
 }
