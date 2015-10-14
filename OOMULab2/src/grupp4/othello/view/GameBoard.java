@@ -21,6 +21,7 @@ import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
@@ -41,9 +42,14 @@ public class GameBoard {
         
         for(int i=0;i<8; i++){
             for(int j = 0;j<8; j++){
-                Circle ci = new Circle(20,20,20,Color.TRANSPARENT);
-                grid.add(ci, i, j);
-                GridPane.setMargin(ci,new Insets(5));
+                StackPane tile= new StackPane();
+                tile.setMinSize(50, 50);
+                grid.add(tile, i, j);
+                //Tile til = new Tile();
+                //grid.add(til.getTile(),i,j);
+//                Circle ci = new Circle(20,20,20,Color.TRANSPARENT);
+//                grid.add(ci, i, j);
+//                GridPane.setMargin(ci,new Insets(5));
             }
         }
         setStartingPos();
@@ -61,9 +67,11 @@ public class GameBoard {
             @Override
             public void handle(MouseEvent e) {
                 for(Node node: grid.getChildren()){
-                    if(node instanceof Circle) {
+                    if(node instanceof StackPane) {
                         if(node.getBoundsInParent().contains(e.getSceneX(), e.getSceneY())){
+                            placeMarker(GridPane.getRowIndex( node),GridPane.getColumnIndex(node), Color.BLACK);
                             System.out.println( "Node: " + node + " at " + GridPane.getRowIndex( node) + "/" + GridPane.getColumnIndex(node));
+                            break;
                         }
                     }
                 }
@@ -105,7 +113,8 @@ public class GameBoard {
     
     public void placeMarker(int row, int column, Color col){
         Circle w2 = new Circle(20,20,20,col);
-        grid.add(w2,column,row);
+        grid.add(w2, column, row);
+        
         GridPane.setMargin(w2,new Insets(5));
     }
     
@@ -137,5 +146,17 @@ abstract class Marker{
 }
     
 class Tile{
+    
+    StackPane tile;
+    
+    public Tile(){
+        tile= new StackPane();
+        tile.setMinSize(50, 50);
+    }
+    
+    public StackPane getTile(){
+        
+        return this.tile;
+    }
     
 } 
