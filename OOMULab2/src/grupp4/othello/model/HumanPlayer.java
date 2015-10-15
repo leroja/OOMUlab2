@@ -17,7 +17,7 @@ public class HumanPlayer extends Player{
     }
      
     @Override
-    public GridRow getMove(){
+    public GridRow getMove(GameGrid grid){
          return null;
         
     }    

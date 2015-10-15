@@ -13,5 +13,5 @@ public abstract class Player {
     protected String  name;
     protected char markörID;
 
-    public abstract GridRow getMove();
+    public abstract GridRow getMove(GameGrid grid);
 }
