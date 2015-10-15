@@ -14,4 +14,14 @@ public abstract class Player {
     protected char markörID;
 
     public abstract GridRow getMove(GameGrid grid);
+
+    public String getName() {
+        return name;
+    }
+
+    public char getMarkörID() {
+        return markörID;
+    }
+    
+    
 }

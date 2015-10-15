@@ -60,6 +60,16 @@ public class GameGrid{
         return arr;
     }
     
+    public boolean moreAvailableMoves(char markörID){
+        for(int i = 0;i < 8;i++){
+            for(int j =0; j < 8;j++){
+                if(availableMove(i,j,markörID)){
+                    return true;
+                }   
+            }
+        }
+        return false;
+    }
     
     
     public boolean availableMove(int row,int column,char markörID){
@@ -114,6 +124,7 @@ public class GameGrid{
             while(grid[row+1][colum+1] != markörID && grid[row][colum]!= 0){
                 grid[row+1][colum+1] = markörID;
                 row = row +1;
+                colum = colum +1;
             }
             
         }

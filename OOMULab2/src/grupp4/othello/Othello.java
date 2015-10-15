@@ -38,15 +38,22 @@ public class Othello extends Application{
         
         while(true){
             try{
-                GridRow gRP1 = p1.getMove(grid);
-                grid.move(gRP1.getRow(),gRP1.getColumn(),'B');
-                grid.printGameGrid();
-                System.out.println();
-            
-                GridRow gRP2 = p2.getMove(grid);
-                grid.move(gRP2.getRow(), gRP2.getColumn(),'W');
-                grid.printGameGrid();
-                System.out.println();
+                if(grid.moreAvailableMoves(p1.getMarkörID())){
+                    System.out.println("B");
+                    GridRow gRP1 = p1.getMove(grid);
+                    grid.move(gRP1.getRow(),gRP1.getColumn(),p1.getMarkörID());
+                    grid.printGameGrid();
+                }
+                if(grid.moreAvailableMoves(p2.getMarkörID())){
+                    System.out.println("W");
+                    GridRow gRP2 = p2.getMove(grid);
+                    grid.move(gRP2.getRow(), gRP2.getColumn(),p2.getMarkörID());
+                    grid.printGameGrid();
+                }
+                if(!(grid.moreAvailableMoves(p1.getMarkörID()))&&!(grid.moreAvailableMoves(p2.getMarkörID()))){
+                    System.out.println(grid.winner() + " is the Winner"); 
+                    System.exit(0);
+                }
             }catch(Exception e){
                 System.out.println(e.getCause());
                 System.exit(0);
