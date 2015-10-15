@@ -5,6 +5,7 @@
  */
 package grupp4.othello.model;
 
+import grupp4.othello.model.exception.InvalidMoveException;
 import java.util.ArrayList;
 
 /**
@@ -61,16 +62,16 @@ public class GameGrid{
     
     
     
-    public boolean availableMove(int x,int y,char markörID){
-        if (grid[x][y]!= 0) return (false);
-        if (moveCheck(x,y,1,0,markörID))return true;
-        else if (moveCheck(x,y,1,1,markörID))return true;
-        else if (moveCheck(x,y,0,1,markörID))return true;
-        else if (moveCheck(x,y,-1,-1,markörID))return true;
-        else if (moveCheck(x,y,-1,0,markörID))return true;
-        else if (moveCheck(x,y,0,-1,markörID))return true;
-        else if (moveCheck(x,y,-1,1,markörID))return true;
-        else if (moveCheck(x,y,1,-1,markörID))return true;
+    public boolean availableMove(int row,int column,char markörID){
+        if (grid[row][column]!= 0) return (false);
+        if (moveCheck(row,column,1,0,markörID))return true;
+        else if (moveCheck(row,column,1,1,markörID))return true;
+        else if (moveCheck(row,column,0,1,markörID))return true;
+        else if (moveCheck(row,column,-1,-1,markörID))return true;
+        else if (moveCheck(row,column,-1,0,markörID))return true;
+        else if (moveCheck(row,column,0,-1,markörID))return true;
+        else if (moveCheck(row,column,-1,1,markörID))return true;
+        else if (moveCheck(row,column,1,-1,markörID))return true;
         else return (false);
     }    
 
@@ -87,6 +88,16 @@ public class GameGrid{
             if (grid[i][j] == markörID) return (true);
         }
         return (false);
+    }
+    
+    
+    public void move(int row, int column, char markörID) throws InvalidMoveException {
+        
+        if(availableMove(row,column,markörID)){
+        uppdateWithMove(row,column,markörID);
+        }
+        else
+            throw new InvalidMoveException();
     }
 
 
@@ -108,7 +119,6 @@ public class GameGrid{
         }
         else if (moveCheck(row,colum,0,1,markörID)){
              while(grid[row][colum+1] != markörID && grid[row][colum]!= 0){
-                 System.out.println("hej \n");
                 grid[row][colum+1] = markörID;
                 colum = colum +1;
             }
@@ -148,7 +158,26 @@ public class GameGrid{
                 colum = colum -1;
             }
         }
-    // NotifyGameBoard(grid);
+    }
+    
+    public char winner(){
+        int black=0;
+        int white=0;
+          for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                if (grid[i][j]== 'B'){
+                    black ++;
+                }
+                if (grid[i][j]=='W'){
+                    white++;
+                }
+            }
+        
+        }
+        if(black > white) return ('B');
+        else if(black < white) return ('W');
+        else return('D');
     }
 }
+          
 
