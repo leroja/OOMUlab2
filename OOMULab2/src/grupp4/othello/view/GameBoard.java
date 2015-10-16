@@ -45,11 +45,6 @@ public class GameBoard {
                 StackPane tile= new StackPane();
                 tile.setMinSize(50, 50);
                 grid.add(tile, i, j);
-                //Tile til = new Tile();
-                //grid.add(til.getTile(),i,j);
-//                Circle ci = new Circle(20,20,20,Color.TRANSPARENT);
-//                grid.add(ci, i, j);
-//                GridPane.setMargin(ci,new Insets(5));
             }
         }
         setStartingPos();
@@ -122,10 +117,10 @@ public class GameBoard {
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
                 if (grid[i][j]== 'B'){
-                placeMarker(i,j,Color.BLACK);
+                    placeMarker(i,j,Color.BLACK);
                 }
                 else if (grid[i][j]== 'W'){
-                placeMarker(i,j,Color.WHITE); 
+                    placeMarker(i,j,Color.WHITE); 
                 }
 
             }

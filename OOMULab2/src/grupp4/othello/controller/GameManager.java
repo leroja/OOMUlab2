@@ -21,13 +21,9 @@ public class GameManager {
         
     }
 
-    public void manage(){
-
-        
-    }
     
     private void gameOver(GameGrid grid,Player p1, Player p2){
-        if(!(grid.moreAvailableMoves(p1.getMarkörID()))&&!(grid.moreAvailableMoves(p2.getMarkörID()))){
+        if(!(grid.moreAvailableMoves(p1.getMarkörID())) && !(grid.moreAvailableMoves(p2.getMarkörID()))){
                     WinnerDialog winner = new WinnerDialog();
                     if (grid.winner() == 'B'){
                         winner.displayWinnerDialog(p1.getName());
