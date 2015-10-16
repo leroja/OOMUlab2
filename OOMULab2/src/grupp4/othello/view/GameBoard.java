@@ -132,31 +132,4 @@ public class GameBoard {
         }
     }
 }
-class WhiteMarker extends Marker{
-    
-    
-    
-} 
-class BlackMarker extends Marker{
-    
-
-}
-
-abstract class Marker{ 
-}
-    
-class Tile{
-    
-    StackPane tile;
-    
-    public Tile(){
-        tile= new StackPane();
-        tile.setMinSize(50, 50);
-    }
-    
-    public StackPane getTile(){
-        
-        return this.tile;
-    }
-    
-} 
+ 

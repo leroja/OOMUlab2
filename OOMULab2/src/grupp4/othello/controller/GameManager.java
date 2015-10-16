@@ -6,6 +6,7 @@
 package grupp4.othello.controller;
 
 import grupp4.othello.view.*;
+import javafx.util.Pair;
 
 /**
  *
@@ -14,11 +15,14 @@ import grupp4.othello.view.*;
 
 public class GameManager {
 
+    public void manage(){
+
+        
+    }
     
     
-    
- public void notifyGameBoard(char[][] grid){
-     GameBoard board = new GameBoard();
-     board.onUppdateInGameGrid(grid);
- }
+    public void notifyGameBoard(char[][] grid){
+        GameBoard board = new GameBoard();
+        board.onUppdateInGameGrid(grid);
+    }
 }

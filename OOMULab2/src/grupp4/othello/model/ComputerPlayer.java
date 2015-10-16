@@ -24,7 +24,7 @@ public class ComputerPlayer extends Player {
     public GridRow getMove(GameGrid grid){
         //GameGrid grid = new GameGrid();
         Random rand = new Random();
-        ArrayList<GridRow> arr = new ArrayList<>();
+        ArrayList<GridRow> arr;
         arr = grid.getAvailableMoves(this.markörID);
         int size = arr.size();
         int drag = rand.nextInt(size);

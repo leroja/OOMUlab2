@@ -11,10 +11,9 @@ package grupp4.othello;
 import grupp4.othello.model.ComputerPlayer;
 import grupp4.othello.model.GameGrid;
 import grupp4.othello.model.GridRow;
+import grupp4.othello.model.HumanPlayer;
 import grupp4.othello.model.Player;
 import grupp4.othello.view.*;
-import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.util.Pair;
@@ -29,8 +28,18 @@ public class Othello extends Application{
     @Override
     public void start(Stage stage) throws Exception{
         
-        Player p1 = new ComputerPlayer("test1",'B');
-        Player p2 = new ComputerPlayer("test2",'W');
+        String player1Name, player2Name,player1Type, player2Type;
+        SetUpGameDialog setUp = new SetUpGameDialog();
+        Pair<String, String> player1, player2; 
+        
+        player1 = setUp.setPlayer1();
+        player2 = setUp.setPlayer2();
+        
+        
+        
+        Player p1, p2;
+        p1 = setPlayer(player1.getValue(), player1.getKey(), 'B');
+        p2 = setPlayer(player2.getValue(), player2.getKey(), 'W');
         
         
         GameGrid grid = new GameGrid();
@@ -60,10 +69,13 @@ public class Othello extends Application{
             }
                 
         }
-       
         
-        
-        
+    }
+    private Player setPlayer(String type,String name, char markörId){
+        if ("Computer".equals(type)){
+            return new ComputerPlayer(name, markörId);
+        }else
+            return new HumanPlayer(name, markörId);
     }
 }
    

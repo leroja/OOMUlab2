@@ -104,7 +104,7 @@ public class GameGrid{
     public void move(int row, int column, char markörID) throws InvalidMoveException {
         
         if(availableMove(row,column,markörID)){
-        uppdateWithMove(row,column,markörID);
+            uppdateWithMove(row,column,markörID);
         }
         else
             throw new InvalidMoveException();
@@ -115,58 +115,58 @@ public class GameGrid{
     public void uppdateWithMove(int row, int colum,char markörID){
         uppdateGrid(row,colum,markörID);
         if (moveCheck(row,colum,1,0,markörID)){
-            while(grid[row+1][colum] != markörID && grid[row][colum]!= 0){
+            while(grid[row+1][colum] != markörID && grid[row][colum] != 0){
                 grid[row+1][colum] = markörID;
-                row = row +1;
+                row = row + 1;
             }
         }
         else if (moveCheck(row,colum,1,1,markörID)){
-            while(grid[row+1][colum+1] != markörID && grid[row][colum]!= 0){
+            while(grid[row+1][colum+1] != markörID && grid[row][colum] != 0){
                 grid[row+1][colum+1] = markörID;
-                row = row +1;
-                colum = colum +1;
+                row = row + 1;
+                colum = colum + 1;
             }
             
         }
         else if (moveCheck(row,colum,0,1,markörID)){
-             while(grid[row][colum+1] != markörID && grid[row][colum]!= 0){
+             while(grid[row][colum+1] != markörID && grid[row][colum] != 0){
                 grid[row][colum+1] = markörID;
-                colum = colum +1;
+                colum = colum + 1;
             }
         }
         else if (moveCheck(row,colum,-1,-1,markörID)){
-             while(grid[row-1][colum-1] != markörID && grid[row][colum]!= 0){
+             while(grid[row-1][colum-1] != markörID && grid[row][colum] != 0){
                 grid[row-1][colum-1] = markörID;
-                row = row -1;
+                row = row -  1;
                 colum = colum -1;
             }
         }
         else if (moveCheck(row,colum,-1,0,markörID)){
-             while(grid[row - 1][colum] != markörID && grid[row][colum]!= 0){
+             while(grid[row - 1][colum] != markörID && grid[row][colum] != 0){
                 grid[row - 1][colum] = markörID;
-                row = row- 1;
+                row = row - 1;
             }
             
         }
         else if (moveCheck(row,colum,0,-1,markörID)){
-             while(grid[row][colum-1] != markörID && grid[row][colum]!= 0){
+             while(grid[row][colum-1] != markörID && grid[row][colum] != 0){
                 grid[row][colum-1] = markörID;
-                colum = colum -1;
+                colum = colum - 1;
             }
             
         }
         else if (moveCheck(row,colum,-1,1,markörID)){
-             while(grid[row-1][colum+1] != markörID && grid[row][colum]!= 0){
+             while(grid[row-1][colum+1] != markörID && grid[row][colum] != 0){
                 grid[row-1][colum+1] = markörID;
-                row = row -1;
-                colum = colum +1;
+                row = row - 1;
+                colum = colum + 1;
             }
         }
         else if (moveCheck(row,colum,1,-1,markörID)){
-             while(grid[row+1][colum-1] != markörID && grid[row][colum]!= 0){
+             while(grid[row+1][colum-1] != markörID && grid[row][colum] != 0){
                 grid[row+1][colum-1] = markörID;
-                row = row +1;
-                colum = colum -1;
+                row = row + 1;
+                colum = colum - 1;
             }
         }
     }
@@ -176,10 +176,10 @@ public class GameGrid{
         int white=0;
           for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
-                if (grid[i][j]== 'B'){
+                if (grid[i][j] == 'B'){
                     black ++;
                 }
-                if (grid[i][j]=='W'){
+                if (grid[i][j] == 'W'){
                     white++;
                 }
             }

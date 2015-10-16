@@ -23,5 +23,4 @@ public abstract class Player {
         return markörID;
     }
     
-    
 }
