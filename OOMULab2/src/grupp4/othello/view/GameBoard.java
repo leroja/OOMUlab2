@@ -24,6 +24,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.util.Pair;
 
 /**
  *
@@ -64,6 +65,8 @@ public class GameBoard {
                 for(Node node: grid.getChildren()){
                     if(node instanceof StackPane) {
                         if(node.getBoundsInParent().contains(e.getSceneX(), e.getSceneY())){
+                            //temp
+                            Pair<Integer,Integer> cord = new Pair<>(GridPane.getRowIndex( node),GridPane.getColumnIndex(node));
                             placeMarker(GridPane.getRowIndex( node),GridPane.getColumnIndex(node), Color.BLACK);
                             System.out.println( "Node: " + node + " at " + GridPane.getRowIndex( node) + "/" + GridPane.getColumnIndex(node));
                             break;
