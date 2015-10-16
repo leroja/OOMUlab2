@@ -9,6 +9,8 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.geometry.Insets;
+import javafx.scene.ImageCursor;
+import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -42,6 +44,20 @@ public class GameFrame {
         border.setCenter(board.getGridPane());
         border.setBottom(currentPlayer);
     
+//        Cursor cur = new Cursor("/resources/mmp.png");
+        
+//        border.setCursor(Cursor.cursor("/resources/sym57.cur"));
+        //C:\Users\Lennart\Documents\NetBeansProjects\OOMUlab2\OOMULab2\src\resources
+        //C:/Users/Lennart\Documents/NetBeansProjects/OOMUlab2/OOMULab2/src/resources
+        
+//        Image image = new Image("/resources/mmp.png");  //pass in the image path, 
+//        ImageCursor curs = new ImageCursor(image);
+//        ImageCursor.getBestSize(10, 10);
+//        border.setCursor(curs);
+        
+        Image image = new Image("/resources/sym57.cur");  //pass in the image path, 
+        ImageCursor curs = new ImageCursor(image);
+        border.setCursor(curs);
     
         Scene scene = new Scene(border);
         primaryStage.setScene(scene);
