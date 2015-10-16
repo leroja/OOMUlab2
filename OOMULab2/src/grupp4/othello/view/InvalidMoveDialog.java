@@ -6,6 +6,8 @@
 package grupp4.othello.view;
 
 import javafx.scene.control.Alert;
+import javafx.scene.image.Image;
+import javafx.stage.Stage;
 
 /**
  *
@@ -18,7 +20,9 @@ public class InvalidMoveDialog {
         alert.setTitle("Invalid Move!!!");
         alert.setHeaderText(null);
         alert.setContentText("Invalid move. Please redo your move." );
-    
+        Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+        stage.getIcons().add(new Image(this.getClass().getResource("/resources/reversi_icon.png").toString()));
+        
         alert.showAndWait();
  } 
 }

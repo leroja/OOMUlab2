@@ -18,7 +18,10 @@ import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 import javafx.util.Pair;
 
 
@@ -95,6 +98,8 @@ public class SetUpGameDialog {
         dialog.setTitle("Set Player 1");
         dialog.setHeaderText(null);
         
+        Stage stage = (Stage) dialog.getDialogPane().getScene().getWindow();
+        stage.getIcons().add(new Image(this.getClass().getResource("/resources/reversi_icon.png").toString()));
         dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
 
         
@@ -138,6 +143,8 @@ public class SetUpGameDialog {
         dialog.setTitle("Set Player 2");
         dialog.setHeaderText(null);
         
+        Stage stage = (Stage) dialog.getDialogPane().getScene().getWindow();
+        stage.getIcons().add(new Image(this.getClass().getResource("/resources/reversi_icon.png").toString()));
         dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
 
         
