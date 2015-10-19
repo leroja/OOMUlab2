@@ -5,11 +5,13 @@
  */
 package grupp4.othello.model;
 
+import grupp4.othello.controller.CustomListener;
+
 /**
  *
  * @author alexander
  */
-public abstract class Player {
+public abstract class Player implements CustomListener, Runnable{
     protected String  name;
     protected char markörID;
 
@@ -22,5 +24,13 @@ public abstract class Player {
     public char getMarkörID() {
         return markörID;
     }
+     
     
+    public static Player setPlayer(String type, String name,char markörID){
+        if ("Computer".equals(type)){
+            return new ComputerPlayer(name, markörID);
+        }else{
+            return new HumanPlayer(name, markörID);
+        }
+    }
 }

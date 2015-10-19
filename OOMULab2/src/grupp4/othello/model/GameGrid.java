@@ -27,6 +27,10 @@ public class GameGrid{
         grid[3][4]='B';
     }
     
+    public boolean isGAmeOver(){
+        return !(moreAvailableMoves('W')) && !(moreAvailableMoves('B'));
+    }
+    
     public void resetGrid(){
        
         for (int i=0;i <= 7;i++){
@@ -172,9 +176,9 @@ public class GameGrid{
     }
     
     public char winner(){
-        int black=0;
-        int white=0;
-          for (int i = 0; i < 8; i++) {
+        int black = 0;
+        int white = 0;
+        for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
                 if (grid[i][j] == 'B'){
                     black ++;
@@ -183,7 +187,6 @@ public class GameGrid{
                     white++;
                 }
             }
-        
         }
         if(black > white) return ('B');
         else if(black < white) return ('W');

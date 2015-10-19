@@ -6,8 +6,11 @@
 package grupp4.othello.controller;
 
 import grupp4.othello.model.GameGrid;
+import grupp4.othello.model.GridRow;
 import grupp4.othello.model.Player;
+import grupp4.othello.model.exception.InvalidMoveException;
 import grupp4.othello.view.*;
+import javafx.stage.Stage;
 import javafx.util.Pair;
 
 /**
@@ -15,30 +18,70 @@ import javafx.util.Pair;
  * @author Lennart
  */
 
-public class GameManager {
+public class GameManager implements Runnable {
+    Player player1, player2;
+    Stage stage;
     
-    public void othelloManager(Player p1, Player p2){
+    public GameManager(Player player1, Player player2, Stage stage){
+        this.player1 = player1;
+        this.player2 = player2;
+        this.stage = stage;
+    }
+    
+    public void othelloManager(){
+        GameFrame dd = new GameFrame(stage);
+        dd.addli(player1);
         
+        
+//        GameGrid grid = new GameGrid();
+//        grid.printGameGrid();
+//        
+//        while(true){
+//            try{
+//                gameOver(grid,player1,player2);
+//                if(grid.moreAvailableMoves(player1.getMarkörID())){
+//                    System.out.println("W");
+//                    GridRow gRP1 = player1.getMove(grid);
+//                    grid.move(gRP1.getRow(),gRP1.getColumn(),player1.getMarkörID());
+//                    grid.printGameGrid();
+//                }
+//                if(grid.moreAvailableMoves(player2.getMarkörID())){
+//                    System.out.println("B");
+//                    GridRow gRP2 = player2.getMove(grid);
+//                    grid.move(gRP2.getRow(), gRP2.getColumn(),player2.getMarkörID());
+//                    grid.printGameGrid();
+//                }
+//                
+//            }catch(InvalidMoveException e){
+//                System.out.println(e.getMessage());
+//                System.exit(0);
+//            }
+        //}
     }
 
     
     private void gameOver(GameGrid grid,Player p1, Player p2){
-        if(!(grid.moreAvailableMoves(p1.getMarkörID())) && !(grid.moreAvailableMoves(p2.getMarkörID()))){
-                    WinnerDialog winner = new WinnerDialog();
-                    if (grid.winner() == 'B'){
-                        winner.displayWinnerDialog(p1.getName());
-                        System.exit(0);
-                }
-                    else if(grid.winner() == 'W'){
-                         winner.displayWinnerDialog(p2.getName());
-                         System.exit(0);
-                    }
-                    else{
-                        DrawnDialog draw = new DrawnDialog();
-                        draw.DisplayDrawDialog();
-                        System.exit(0);
-                    }
-                   
-                }
+        if(grid.isGAmeOver()){
+            WinnerDialog winnerDialog = new WinnerDialog();
+            char winner = grid.winner();
+            if (winner == 'B'){
+                winnerDialog.displayWinnerDialog(p1.getName());
+                System.exit(0);
+            }
+            else if(winner == 'W'){
+                 winnerDialog.displayWinnerDialog(p2.getName());
+                 System.exit(0);
+            }
+            else{
+                DrawnDialog draw = new DrawnDialog();
+                draw.DisplayDrawDialog();
+                System.exit(0);
+            }
+        }
+    }
+
+    @Override
+    public void run() {
+        othelloManager();
     }
 }

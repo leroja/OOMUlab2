@@ -5,6 +5,9 @@
  */
 package grupp4.othello.view;
 
+import grupp4.othello.controller.ClickGenerator;
+import grupp4.othello.controller.CustomEvent;
+import grupp4.othello.controller.CustomListener;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -30,9 +33,9 @@ import javafx.util.Pair;
  *
  * @author Lennart
  */
-public class GameBoard {
+public class GameBoard implements ClickGenerator{
     GridPane grid;
-
+    CustomListener list;
     
     
     public GameBoard(){
@@ -67,8 +70,9 @@ public class GameBoard {
                         if(node.getBoundsInParent().contains(e.getSceneX(), e.getSceneY())){
                             //temp
                             Pair<Integer,Integer> cord = new Pair<>(GridPane.getRowIndex( node),GridPane.getColumnIndex(node));
+                            list.HumanClicked(new CustomEvent(cord));
                             placeMarker(GridPane.getRowIndex( node),GridPane.getColumnIndex(node), Color.BLACK);
-                            System.out.println( "Node: " + node + " at " + GridPane.getRowIndex( node) + "/" + GridPane.getColumnIndex(node));
+                            //System.out.println( "Node: " + node + " at " + GridPane.getRowIndex( node) + "/" + GridPane.getColumnIndex(node));
                             break;
                         }
                     }
@@ -96,6 +100,9 @@ public class GameBoard {
         
         
     }
+    
+    
+
     
     
     public GridPane getGridPane(){
@@ -128,6 +135,12 @@ public class GameBoard {
 
             }
         }
+    }
+
+    @Override
+    public void addListener(CustomListener listener) {
+        
+        list = listener;
     }
 }
  

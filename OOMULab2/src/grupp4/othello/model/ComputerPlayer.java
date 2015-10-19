@@ -5,6 +5,7 @@
  */
 package grupp4.othello.model;
 
+import grupp4.othello.controller.CustomEvent;
 import java.util.ArrayList;
 import java.util.Random;
 import javafx.util.Pair;
@@ -29,6 +30,16 @@ public class ComputerPlayer extends Player {
         int size = arr.size();
         int drag = rand.nextInt(size);
         return (arr.get(drag));
+        
+    }
+
+    @Override
+    public void HumanClicked(CustomEvent e) {
+        
+    }
+
+    @Override
+    public void run() {
         
     }
 }

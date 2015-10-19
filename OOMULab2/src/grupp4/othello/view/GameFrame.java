@@ -5,6 +5,8 @@
  */
 package grupp4.othello.view;
 
+import grupp4.othello.controller.CustomListener;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -26,10 +28,15 @@ import javafx.stage.Stage;
  * @author Lennart
  */
 public class GameFrame {
+    private GameBoard board;
+    private BorderPane border;
+    private Stage primaryStage;
     
-    public void displayGameFrame(Stage primaryStage){
-        GameBoard board = new GameBoard();
-        BorderPane border = new BorderPane();
+    public GameFrame(Stage primaryStage){
+        this.primaryStage = primaryStage;
+        
+        board = new GameBoard();
+        border = new BorderPane();
         VBox buttonColumn, nbrCol;
         HBox hBox = getLetterRow();
         buttonColumn = getVBox();
@@ -43,32 +50,29 @@ public class GameFrame {
         border.setRight(buttonColumn);
         border.setCenter(board.getGridPane());
         border.setBottom(currentPlayer);
-    
-//        Cursor cur = new Cursor("/resources/mmp.png");
         
-//        border.setCursor(Cursor.cursor("/resources/sym57.cur"));
-        //C:\Users\Lennart\Documents\NetBeansProjects\OOMUlab2\OOMULab2\src\resources
-        //C:/Users/Lennart\Documents/NetBeansProjects/OOMUlab2/OOMULab2/src/resources
-        
-//        Image image = new Image("/resources/mmp.png");  //pass in the image path, 
-//        ImageCursor curs = new ImageCursor(image);
-//        ImageCursor.getBestSize(10, 10);
-//        border.setCursor(curs);
-        
-        Image image = new Image("/resources/sym57.cur");  //pass in the image path, 
+        Image image = new Image("/resources/sym57.cur");
         ImageCursor curs = new ImageCursor(image);
         border.setCursor(curs);
-    
+        
+        
         Scene scene = new Scene(border);
-        primaryStage.setScene(scene);
-        primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/resources/reversi_icon.png")));
-        primaryStage.setTitle("Othello");
-        primaryStage.setResizable(false);
-        primaryStage.sizeToScene();
-        primaryStage.show();
+        this.primaryStage.setScene(scene);
+        
+        this.primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/resources/reversi_icon.png")));
+        this.primaryStage.setTitle("Othello");
+        this.primaryStage.setResizable(false);
+        this.primaryStage.sizeToScene();
+        
+        this.primaryStage.show();
+        
     }
     
-    public HBox getLetterRow(){
+    public void addli(CustomListener listener){
+        board.addListener(listener);
+    }
+    
+    private HBox getLetterRow(){
         HBox hBox= new HBox();
         
         for(char i= 'A';i < 'I';i++){
@@ -81,7 +85,7 @@ public class GameFrame {
         return hBox;
     }
     
-    public VBox getNumberColumn(){
+    private VBox getNumberColumn(){
         VBox vvBox = new VBox();
         
         for(int i= 0;i<8;i++){
@@ -95,7 +99,7 @@ public class GameFrame {
     }
     
     
-    public VBox getVBox(){
+    private VBox getVBox(){
         Button nyttParti = new Button("Nytt parti");
         nyttParti.setPrefSize(70,35);
         NewGameEventHandler Game = new NewGameEventHandler();

@@ -8,6 +8,7 @@ package grupp4.othello;
  * and open the template in the editor.
  */
 
+import grupp4.othello.controller.GameManager;
 import grupp4.othello.model.ComputerPlayer;
 import grupp4.othello.model.GameGrid;
 import grupp4.othello.model.GridRow;
@@ -28,18 +29,24 @@ public class Othello extends Application{
     @Override
     public void start(Stage stage) throws Exception{
         
-        GameFrame dd = new GameFrame();
-        dd.displayGameFrame(stage);
         
-//        SetUpGameDialog setUp = new SetUpGameDialog();
-//        Pair<String, String> player1, player2;
-//        Player p1, p2;
-//        
-//        player1 = setUp.setPlayer1();
-//        player2 = setUp.setPlayer2();
-//        p1 = setPlayer(player1.getValue(), player1.getKey(), 'B');
-//        p2 = setPlayer(player2.getValue(), player2.getKey(), 'W');
-//        
+        
+        SetUpGameDialog setUp = new SetUpGameDialog();
+        Pair<String, String> player1, player2;
+        Player p1, p2;
+        
+        player1 = setUp.setPlayer1();
+        player2 = setUp.setPlayer2();
+        p1 = Player.setPlayer(player1.getValue(), player1.getKey(), 'W');
+        p2 = Player.setPlayer(player2.getValue(), player2.getKey(), 'B');
+        
+        GameManager man = new GameManager(p1, p2, stage);
+        man.othelloManager();
+        
+//        Thread game = new Thread(new GameManager(p1, p2, stage));
+//        game.start();
+        
+
 //        
 //        GameGrid grid = new GameGrid();
 //        grid.printGameGrid();
@@ -69,12 +76,6 @@ public class Othello extends Application{
 //                
 //        }
         
-    }
-    private Player setPlayer(String type,String name, char markörId){
-        if ("Computer".equals(type)){
-            return new ComputerPlayer(name, markörId);
-        }else
-            return new HumanPlayer(name, markörId);
     }
 }
    
