@@ -37,19 +37,24 @@ import javafx.util.Pair;
 public class GameBoard implements ClickGenerator, UpdtListener{
     GridPane grid;
     ClickListener list;
+    Circle[][] circles;
     
     
     public GameBoard(){
         // Temp kod, ta bort
         grid = new GridPane();
         grid.setGridLinesVisible(true);
-        
+        circles = new Circle[8][8];
         
         for(int i=0;i<8; i++){
             for(int j = 0;j<8; j++){
                 StackPane tile= new StackPane();
                 tile.setMinSize(50, 50);
+                Circle c = new Circle(20,Color.TRANSPARENT);
                 grid.add(tile, i, j);
+                circles[i][j] = c;
+                grid.add(c, j, i);
+                GridPane.setMargin(c,new Insets(5));
             }
         }
         setStartingPos();
@@ -72,7 +77,7 @@ public class GameBoard implements ClickGenerator, UpdtListener{
                             //temp
                             Pair<Integer,Integer> cord = new Pair<>(GridPane.getRowIndex( node),GridPane.getColumnIndex(node));
                             list.HumanClicked(new CustomEvent(cord));
-                            placeMarker(GridPane.getRowIndex( node),GridPane.getColumnIndex(node), Color.BLACK);
+                            //placeMarker(GridPane.getRowIndex( node),GridPane.getColumnIndex(node), Color.BLACK);
                             //System.out.println( "Node: " + node + " at " + GridPane.getRowIndex( node) + "/" + GridPane.getColumnIndex(node));
                             break;
                         }
@@ -111,10 +116,14 @@ public class GameBoard implements ClickGenerator, UpdtListener{
     }
     
     public void setStartingPos(){
-        placeMarker(4,3,Color.BLACK);
-        placeMarker(3,4,Color.BLACK);
-        placeMarker(3,3,Color.WHITE);
-        placeMarker(4,4,Color.WHITE);
+//        placeMarker(4,3,Color.BLACK);
+//        placeMarker(3,4,Color.BLACK);
+//        placeMarker(3,3,Color.WHITE);
+//        placeMarker(4,4,Color.WHITE);
+        circles[4][3].setFill(Color.BLACK);
+        circles[3][4].setFill(Color.BLACK);
+        circles[4][4].setFill(Color.WHITE);
+        circles[3][3].setFill(Color.WHITE);
     }
     
     public void placeMarker(int row, int column, Color col){
@@ -160,13 +169,27 @@ public class GameBoard implements ClickGenerator, UpdtListener{
 //        }
 //        
         
-        Pair<Pair<Integer, Integer>,Character> test = (Pair)e.getSource();
-        if(test.getValue() == 'B'){
-            placeMarker(test.getKey().getKey(),test.getKey().getValue(),Color.BLACK);
-        }else if(test.getValue() == 'W'){
-            placeMarker(test.getKey().getKey(),test.getKey().getValue(),Color.WHITE);
+        char[][] test = (char[][])e.getSource();
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                if (test[i][j]== 'B'){
+                    circles[i][j].setFill(Color.BLACK);
+                }else if (test[i][j]== 'W'){
+                    circles[i][j].setFill(Color.WHITE);
+                }else if(test[i][j] == 0){
+                    circles[i][j].setFill(Color.TRANSPARENT);
+                }
+                
+            }
         }
         
+//        Pair<Pair<Integer, Integer>,Character> test = (Pair)e.getSource();
+//        if(test.getValue() == 'B'){
+//            placeMarker(test.getKey().getKey(),test.getKey().getValue(),Color.BLACK);
+//        }else if(test.getValue() == 'W'){
+//            placeMarker(test.getKey().getKey(),test.getKey().getValue(),Color.WHITE);
+//        }
+//        
     }
 }
  

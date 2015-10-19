@@ -33,33 +33,32 @@ public class GameManager implements Runnable {
         dd.addli(player1);
         
         GameGrid grid = new GameGrid();
-        grid.addUpdtListener(dd.getBoard()); // add gameBoard somehow
+        grid.addUpdtListener(dd.getBoard());
+        dd.addListener(grid);
         
-        
-//        GameGrid grid = new GameGrid();
-        grid.printGameGrid();
-        
-        while(!grid.isGAmeOver()){
-            try{
-                
-                if(grid.moreAvailableMoves(player1.getMarkörID())){
-                    System.out.println("W");
-                    GridRow gRP1 = player1.getMove(grid);
-                    grid.move(gRP1.getRow(),gRP1.getColumn(),player1.getMarkörID());
-                    grid.printGameGrid();
-                }
-                if(grid.moreAvailableMoves(player2.getMarkörID())){
-                    System.out.println("B");
-                    GridRow gRP2 = player2.getMove(grid);
-                    grid.move(gRP2.getRow(), gRP2.getColumn(),player2.getMarkörID());
-                    grid.printGameGrid();
-                }
-                gameOver(grid,player1,player2);
-            }catch(InvalidMoveException e){
-                System.out.println(e.getMessage());
-                System.exit(0);
-            }
-        }
+//        grid.printGameGrid();
+//        
+//        while(!grid.isGAmeOver()){
+//            try{
+//                
+//                if(grid.moreAvailableMoves(player1.getMarkörID())){
+//                    System.out.println("W");
+//                    GridRow gRP1 = player1.getMove(grid);
+//                    grid.move(gRP1.getRow(),gRP1.getColumn(),player1.getMarkörID());
+//                    grid.printGameGrid();
+//                }
+//                if(grid.moreAvailableMoves(player2.getMarkörID())){
+//                    System.out.println("B");
+//                    GridRow gRP2 = player2.getMove(grid);
+//                    grid.move(gRP2.getRow(), gRP2.getColumn(),player2.getMarkörID());
+//                    grid.printGameGrid();
+//                }
+//                gameOver(grid,player1,player2);
+//            }catch(InvalidMoveException e){
+//                System.out.println(e.getMessage());
+//                System.exit(0);
+//            }
+//        }
     }
 
     

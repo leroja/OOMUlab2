@@ -6,6 +6,8 @@
 package grupp4.othello.view;
 
 import grupp4.othello.controller.ClickListener;
+import grupp4.othello.controller.NewGameGen;
+import grupp4.othello.controller.NewGameListener;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -17,6 +19,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
@@ -27,10 +30,11 @@ import javafx.stage.Stage;
  *
  * @author Lennart
  */
-public class GameFrame {
+public class GameFrame implements NewGameGen{
     private GameBoard board;
     private BorderPane border;
     private Stage primaryStage;
+    private NewGameListener listener;
     
     public GameFrame(Stage primaryStage){
         this.primaryStage = primaryStage;
@@ -107,7 +111,10 @@ public class GameFrame {
         Button nyttParti = new Button("Nytt parti");
         nyttParti.setPrefSize(70,35);
         NewGameEventHandler Game = new NewGameEventHandler();
-        nyttParti.setOnAction(Game);
+        //nyttParti.setOnAction(Game);
+        nyttParti.setOnMouseClicked((MouseEvent e) -> {
+            this.listener.newGame(null);
+        });
         
         Button avsluta = new Button("Avsluta");
         avsluta.setPrefSize(70, 35);
@@ -121,6 +128,11 @@ public class GameFrame {
         vbox.setPadding(new Insets(10));
         
         return(vbox);
+    }
+
+    @Override
+    public void addListener(NewGameListener listener) {
+        this.listener = listener;
     }
     
     public class  ExitEventHandler implements EventHandler<ActionEvent> {

@@ -6,6 +6,7 @@
 package grupp4.othello.model;
 
 import grupp4.othello.controller.CustomEvent;
+import grupp4.othello.controller.NewGameListener;
 import grupp4.othello.controller.UpdtGen;
 import grupp4.othello.controller.UpdtListener;
 import grupp4.othello.model.exception.InvalidMoveException;
@@ -16,12 +17,13 @@ import javafx.util.Pair;
  *
  * @author alexander
  */
-public class GameGrid implements UpdtGen{
+public class GameGrid implements UpdtGen, NewGameListener{
     char[][] grid = new char[8][8];
     private UpdtListener listener;
     
     public GameGrid(){
         setStartPositions();
+        
     }
     
     private void setStartPositions(){
@@ -113,7 +115,7 @@ public class GameGrid implements UpdtGen{
         
         if(availableMove(row,column,markörID)){
             uppdateWithMove(row,column,markörID);
-            //listener.updated(new CustomEvent(grid));
+            listener.updated(new CustomEvent(grid));
         }
         else
             throw new InvalidMoveException();
@@ -123,21 +125,21 @@ public class GameGrid implements UpdtGen{
 
     public void uppdateWithMove(int row, int colum,char markörID){
         uppdateGrid(row,colum,markörID);
-        Pair<Pair<Integer, Integer>,Character> test = new Pair<>(new Pair<>(row,colum),markörID);
-        listener.updated(new CustomEvent(test));
+//        Pair<Pair<Integer, Integer>,Character> test = new Pair<>(new Pair<>(row,colum),markörID);
+//        listener.updated(new CustomEvent(test));
         if (moveCheck(row,colum,1,0,markörID)){
             while(grid[row+1][colum] != markörID && grid[row][colum] != 0){
                 grid[row+1][colum] = markörID;
-                test = new Pair<>(new Pair<>(row+1,colum),markörID);
-                listener.updated(new CustomEvent(test));
+//                test = new Pair<>(new Pair<>(row+1,colum),markörID);
+//                listener.updated(new CustomEvent(test));
                 row = row + 1;
             }
         }
         else if (moveCheck(row,colum,1,1,markörID)){
             while(grid[row+1][colum+1] != markörID && grid[row][colum] != 0){
                 grid[row+1][colum+1] = markörID;
-                test = new Pair<>(new Pair<>(row+1,colum+1),markörID);
-                listener.updated(new CustomEvent(test));
+//                test = new Pair<>(new Pair<>(row+1,colum+1),markörID);
+//                listener.updated(new CustomEvent(test));
                 row = row + 1;
                 colum = colum + 1;
             }
@@ -146,16 +148,16 @@ public class GameGrid implements UpdtGen{
         else if (moveCheck(row,colum,0,1,markörID)){
              while(grid[row][colum+1] != markörID && grid[row][colum] != 0){
                 grid[row][colum+1] = markörID;
-                test = new Pair<>(new Pair<>(row,colum+1),markörID);
-                listener.updated(new CustomEvent(test));
+//                test = new Pair<>(new Pair<>(row,colum+1),markörID);
+//                listener.updated(new CustomEvent(test));
                 colum = colum + 1;
             }
         }
         else if (moveCheck(row,colum,-1,-1,markörID)){
              while(grid[row-1][colum-1] != markörID && grid[row][colum] != 0){
                 grid[row-1][colum-1] = markörID;
-                test = new Pair<>(new Pair<>(row-1,colum-1),markörID);
-                listener.updated(new CustomEvent(test));
+//                test = new Pair<>(new Pair<>(row-1,colum-1),markörID);
+//                listener.updated(new CustomEvent(test));
                 row = row -  1;
                 colum = colum -1;
             }
@@ -163,8 +165,8 @@ public class GameGrid implements UpdtGen{
         else if (moveCheck(row,colum,-1,0,markörID)){
              while(grid[row - 1][colum] != markörID && grid[row][colum] != 0){
                 grid[row - 1][colum] = markörID;
-                test = new Pair<>(new Pair<>(row-1,colum),markörID);
-                listener.updated(new CustomEvent(test));
+//                test = new Pair<>(new Pair<>(row-1,colum),markörID);
+//                listener.updated(new CustomEvent(test));
                 row = row - 1;
             }
             
@@ -172,8 +174,8 @@ public class GameGrid implements UpdtGen{
         else if (moveCheck(row,colum,0,-1,markörID)){
              while(grid[row][colum-1] != markörID && grid[row][colum] != 0){
                 grid[row][colum-1] = markörID;
-                test = new Pair<>(new Pair<>(row,colum-1),markörID);
-                listener.updated(new CustomEvent(test));
+//                test = new Pair<>(new Pair<>(row,colum-1),markörID);
+//                listener.updated(new CustomEvent(test));
                 colum = colum - 1;
             }
             
@@ -181,8 +183,8 @@ public class GameGrid implements UpdtGen{
         else if (moveCheck(row,colum,-1,1,markörID)){
              while(grid[row-1][colum+1] != markörID && grid[row][colum] != 0){
                 grid[row-1][colum+1] = markörID;
-                test = new Pair<>(new Pair<>(row-1,colum+1),markörID);
-                listener.updated(new CustomEvent(test));
+//                test = new Pair<>(new Pair<>(row-1,colum+1),markörID);
+//                listener.updated(new CustomEvent(test));
                 row = row - 1;
                 colum = colum + 1;
             }
@@ -190,8 +192,8 @@ public class GameGrid implements UpdtGen{
         else if (moveCheck(row,colum,1,-1,markörID)){
              while(grid[row+1][colum-1] != markörID && grid[row][colum] != 0){
                 grid[row+1][colum-1] = markörID;
-                test = new Pair<>(new Pair<>(row+1,colum-1),markörID);
-                listener.updated(new CustomEvent(test));
+//                test = new Pair<>(new Pair<>(row+1,colum-1),markörID);
+//                listener.updated(new CustomEvent(test));
                 row = row + 1;
                 colum = colum - 1;
             }
@@ -220,6 +222,12 @@ public class GameGrid implements UpdtGen{
     public void addUpdtListener(UpdtListener listener) {
         
         this.listener = listener;
+    }
+
+    @Override
+    public void newGame(CustomEvent e) {
+        resetGrid();
+        listener.updated(new CustomEvent(grid));
     }
 }
           
