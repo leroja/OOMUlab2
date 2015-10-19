@@ -9,10 +9,13 @@ import grupp4.othello.controller.ClickGenerator;
 import grupp4.othello.controller.CustomEvent;
 import grupp4.othello.controller.ClickListener;
 import grupp4.othello.controller.UpdtListener;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
@@ -50,6 +53,26 @@ public class GameBoard implements ClickGenerator, UpdtListener{
             for(int j = 0;j<8; j++){
                 StackPane tile= new StackPane();
                 tile.setMinSize(50, 50);
+                tile.setFocusTraversable(true);
+//                //high ligt focused node
+                tile.setOnKeyPressed((KeyEvent event) -> {
+                    if(event.getCode()==KeyCode.ENTER){
+                        Pair<Integer,Integer> cord = new Pair<>(GridPane.getRowIndex(tile),GridPane.getColumnIndex(tile));
+                        list.HumanClicked(new CustomEvent(cord));
+                    }
+                });
+                tile.focusedProperty().addListener(new ChangeListener<Boolean>(){
+                    @Override
+                    public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                        if(tile.isFocused()){
+                            tile.setStyle("-fx-border-color: yellow;");
+                        }
+                        if(!tile.isFocused()){
+                            tile.setStyle("-fx-border-color: transparent;");
+                        }
+                    }
+                });
+                               
                 Circle c = new Circle(20,Color.TRANSPARENT);
                 grid.add(tile, i, j);
                 circles[i][j] = c;
@@ -86,23 +109,6 @@ public class GameBoard implements ClickGenerator, UpdtListener{
             }
         });
         
-        grid.setOnKeyPressed(new EventHandler<KeyEvent>(){
-            
-            @Override
-            public void handle(KeyEvent event) {
-                
-                
-            };
-        });
-        
-        grid.setOnKeyReleased(new EventHandler<KeyEvent>(){
-
-            @Override
-            public void handle(KeyEvent event) {
-            
-            }
-            
-        });
         
         
     }
@@ -115,7 +121,7 @@ public class GameBoard implements ClickGenerator, UpdtListener{
         return grid;
     }
     
-    public void setStartingPos(){
+    private void setStartingPos(){
 //        placeMarker(4,3,Color.BLACK);
 //        placeMarker(3,4,Color.BLACK);
 //        placeMarker(3,3,Color.WHITE);

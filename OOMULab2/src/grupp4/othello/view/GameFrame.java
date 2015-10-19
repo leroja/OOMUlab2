@@ -116,6 +116,7 @@ public class GameFrame implements NewGameGen{
             this.listener.newGame(null);
         });
         
+        
         Button avsluta = new Button("Avsluta");
         avsluta.setPrefSize(70, 35);
         ExitEventHandler exit = new ExitEventHandler();
