@@ -5,7 +5,7 @@
  */
 package grupp4.othello.view;
 
-import grupp4.othello.controller.CustomListener;
+import grupp4.othello.controller.ClickListener;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -68,8 +68,12 @@ public class GameFrame {
         
     }
     
-    public void addli(CustomListener listener){
+    public void addli(ClickListener listener){
         board.addListener(listener);
+    }
+    
+    public GameBoard getBoard(){
+        return board;
     }
     
     private HBox getLetterRow(){

@@ -11,6 +11,6 @@ import java.util.EventListener;
  *
  * @author Lennart
  */
-public interface CustomListener extends EventListener{
-    void HumanClicked(CustomEvent e);
+public interface UpdtListener extends EventListener{
+    void updated(CustomEvent e);
 }

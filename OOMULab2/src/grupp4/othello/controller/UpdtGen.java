@@ -9,6 +9,6 @@ package grupp4.othello.controller;
  *
  * @author Lennart
  */
-public interface ClickGenerator {
-    void addListener(ClickListener listener);
+public interface UpdtGen {
+    void addUpdtListener(UpdtListener listener);
 }

@@ -5,10 +5,12 @@
  */
 package grupp4.othello.controller;
 
+import java.util.EventListener;
+
 /**
  *
  * @author Lennart
  */
-public interface ClickGenerator {
-    void addListener(ClickListener listener);
+public interface ClickListener extends EventListener{
+    void HumanClicked(CustomEvent e);
 }

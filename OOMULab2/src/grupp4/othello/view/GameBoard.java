@@ -7,7 +7,8 @@ package grupp4.othello.view;
 
 import grupp4.othello.controller.ClickGenerator;
 import grupp4.othello.controller.CustomEvent;
-import grupp4.othello.controller.CustomListener;
+import grupp4.othello.controller.ClickListener;
+import grupp4.othello.controller.UpdtListener;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -33,9 +34,9 @@ import javafx.util.Pair;
  *
  * @author Lennart
  */
-public class GameBoard implements ClickGenerator{
+public class GameBoard implements ClickGenerator, UpdtListener{
     GridPane grid;
-    CustomListener list;
+    ClickListener list;
     
     
     public GameBoard(){
@@ -138,9 +139,20 @@ public class GameBoard implements ClickGenerator{
     }
 
     @Override
-    public void addListener(CustomListener listener) {
+    public void addListener(ClickListener listener) {
         
         list = listener;
+    }
+
+    @Override
+    public void updated(CustomEvent e) {
+        Pair<Pair<Integer, Integer>,Character> test = (Pair)e.getSource();
+        if(test.getValue() == 'B'){
+            placeMarker(test.getKey().getKey(),test.getKey().getValue(),Color.BLACK);
+        }else if(test.getValue() == 'W'){
+            placeMarker(test.getKey().getKey(),test.getKey().getValue(),Color.WHITE);
+        }
+        
     }
 }
  

@@ -5,13 +5,13 @@
  */
 package grupp4.othello.model;
 
-import grupp4.othello.controller.CustomListener;
+import grupp4.othello.controller.ClickListener;
 
 /**
  *
  * @author alexander
  */
-public abstract class Player implements CustomListener, Runnable{
+public abstract class Player implements ClickListener, Runnable{
     protected String  name;
     protected char markörID;
 

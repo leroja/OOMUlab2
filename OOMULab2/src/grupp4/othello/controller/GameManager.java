@@ -32,31 +32,34 @@ public class GameManager implements Runnable {
         GameFrame dd = new GameFrame(stage);
         dd.addli(player1);
         
+        GameGrid grid = new GameGrid();
+        grid.addUpdtListener(dd.getBoard()); // add gameBoard somehow
+        
         
 //        GameGrid grid = new GameGrid();
-//        grid.printGameGrid();
-//        
-//        while(true){
-//            try{
-//                gameOver(grid,player1,player2);
-//                if(grid.moreAvailableMoves(player1.getMarkörID())){
-//                    System.out.println("W");
-//                    GridRow gRP1 = player1.getMove(grid);
-//                    grid.move(gRP1.getRow(),gRP1.getColumn(),player1.getMarkörID());
-//                    grid.printGameGrid();
-//                }
-//                if(grid.moreAvailableMoves(player2.getMarkörID())){
-//                    System.out.println("B");
-//                    GridRow gRP2 = player2.getMove(grid);
-//                    grid.move(gRP2.getRow(), gRP2.getColumn(),player2.getMarkörID());
-//                    grid.printGameGrid();
-//                }
-//                
-//            }catch(InvalidMoveException e){
-//                System.out.println(e.getMessage());
-//                System.exit(0);
-//            }
-        //}
+        grid.printGameGrid();
+        
+        while(!grid.isGAmeOver()){
+            try{
+                
+                if(grid.moreAvailableMoves(player1.getMarkörID())){
+                    System.out.println("W");
+                    GridRow gRP1 = player1.getMove(grid);
+                    grid.move(gRP1.getRow(),gRP1.getColumn(),player1.getMarkörID());
+                    grid.printGameGrid();
+                }
+                if(grid.moreAvailableMoves(player2.getMarkörID())){
+                    System.out.println("B");
+                    GridRow gRP2 = player2.getMove(grid);
+                    grid.move(gRP2.getRow(), gRP2.getColumn(),player2.getMarkörID());
+                    grid.printGameGrid();
+                }
+                gameOver(grid,player1,player2);
+            }catch(InvalidMoveException e){
+                System.out.println(e.getMessage());
+                System.exit(0);
+            }
+        }
     }
 
     
@@ -64,18 +67,18 @@ public class GameManager implements Runnable {
         if(grid.isGAmeOver()){
             WinnerDialog winnerDialog = new WinnerDialog();
             char winner = grid.winner();
-            if (winner == 'B'){
+            if (winner == 'W'){
                 winnerDialog.displayWinnerDialog(p1.getName());
-                System.exit(0);
+                //System.exit(0);
             }
-            else if(winner == 'W'){
+            else if(winner == 'B'){
                  winnerDialog.displayWinnerDialog(p2.getName());
-                 System.exit(0);
+                 //System.exit(0);
             }
             else{
                 DrawnDialog draw = new DrawnDialog();
                 draw.DisplayDrawDialog();
-                System.exit(0);
+                //System.exit(0);
             }
         }
     }

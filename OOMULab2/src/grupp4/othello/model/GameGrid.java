@@ -5,16 +5,20 @@
  */
 package grupp4.othello.model;
 
+import grupp4.othello.controller.CustomEvent;
+import grupp4.othello.controller.UpdtGen;
+import grupp4.othello.controller.UpdtListener;
 import grupp4.othello.model.exception.InvalidMoveException;
 import java.util.ArrayList;
+import javafx.util.Pair;
 
 /**
  *
  * @author alexander
  */
-public class GameGrid{
+public class GameGrid implements UpdtGen{
     char[][] grid = new char[8][8];
-    
+    private UpdtListener listener;
     
     public GameGrid(){
         setStartPositions();
@@ -118,15 +122,21 @@ public class GameGrid{
 
     public void uppdateWithMove(int row, int colum,char markörID){
         uppdateGrid(row,colum,markörID);
+        Pair<Pair<Integer, Integer>,Character> test = new Pair<>(new Pair<>(row,colum),markörID);
+        listener.updated(new CustomEvent(test));
         if (moveCheck(row,colum,1,0,markörID)){
             while(grid[row+1][colum] != markörID && grid[row][colum] != 0){
                 grid[row+1][colum] = markörID;
+                test = new Pair<>(new Pair<>(row+1,colum),markörID);
+                listener.updated(new CustomEvent(test));
                 row = row + 1;
             }
         }
         else if (moveCheck(row,colum,1,1,markörID)){
             while(grid[row+1][colum+1] != markörID && grid[row][colum] != 0){
                 grid[row+1][colum+1] = markörID;
+                test = new Pair<>(new Pair<>(row+1,colum+1),markörID);
+                listener.updated(new CustomEvent(test));
                 row = row + 1;
                 colum = colum + 1;
             }
@@ -135,12 +145,16 @@ public class GameGrid{
         else if (moveCheck(row,colum,0,1,markörID)){
              while(grid[row][colum+1] != markörID && grid[row][colum] != 0){
                 grid[row][colum+1] = markörID;
+                test = new Pair<>(new Pair<>(row,colum+1),markörID);
+                listener.updated(new CustomEvent(test));
                 colum = colum + 1;
             }
         }
         else if (moveCheck(row,colum,-1,-1,markörID)){
              while(grid[row-1][colum-1] != markörID && grid[row][colum] != 0){
                 grid[row-1][colum-1] = markörID;
+                test = new Pair<>(new Pair<>(row-1,colum-1),markörID);
+                listener.updated(new CustomEvent(test));
                 row = row -  1;
                 colum = colum -1;
             }
@@ -148,6 +162,8 @@ public class GameGrid{
         else if (moveCheck(row,colum,-1,0,markörID)){
              while(grid[row - 1][colum] != markörID && grid[row][colum] != 0){
                 grid[row - 1][colum] = markörID;
+                test = new Pair<>(new Pair<>(row-1,colum),markörID);
+                listener.updated(new CustomEvent(test));
                 row = row - 1;
             }
             
@@ -155,6 +171,8 @@ public class GameGrid{
         else if (moveCheck(row,colum,0,-1,markörID)){
              while(grid[row][colum-1] != markörID && grid[row][colum] != 0){
                 grid[row][colum-1] = markörID;
+                test = new Pair<>(new Pair<>(row,colum-1),markörID);
+                listener.updated(new CustomEvent(test));
                 colum = colum - 1;
             }
             
@@ -162,6 +180,8 @@ public class GameGrid{
         else if (moveCheck(row,colum,-1,1,markörID)){
              while(grid[row-1][colum+1] != markörID && grid[row][colum] != 0){
                 grid[row-1][colum+1] = markörID;
+                test = new Pair<>(new Pair<>(row-1,colum+1),markörID);
+                listener.updated(new CustomEvent(test));
                 row = row - 1;
                 colum = colum + 1;
             }
@@ -169,6 +189,8 @@ public class GameGrid{
         else if (moveCheck(row,colum,1,-1,markörID)){
              while(grid[row+1][colum-1] != markörID && grid[row][colum] != 0){
                 grid[row+1][colum-1] = markörID;
+                test = new Pair<>(new Pair<>(row+1,colum-1),markörID);
+                listener.updated(new CustomEvent(test));
                 row = row + 1;
                 colum = colum - 1;
             }
@@ -191,6 +213,12 @@ public class GameGrid{
         if(black > white) return ('B');
         else if(black < white) return ('W');
         else return('D');
+    }
+
+    @Override
+    public void addUpdtListener(UpdtListener listener) {
+        
+        this.listener = listener;
     }
 }
           

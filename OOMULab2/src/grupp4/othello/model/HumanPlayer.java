@@ -33,7 +33,7 @@ public class HumanPlayer extends Player{
     @Override
     public void HumanClicked(CustomEvent e) {
         Pair<Integer,Integer> cord = (Pair)e.getSource();
-        gr = new GridRow(cord.getKey(),cord.getValue());
+        gr = new GridRow(cord.getKey(), cord.getValue());
         System.out.println(cord);
     }
 
