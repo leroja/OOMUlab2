@@ -118,7 +118,8 @@ public class GameBoard implements ClickGenerator, UpdtListener{
     }
     
     public void placeMarker(int row, int column, Color col){
-        Circle w2 = new Circle(20,20,20,col);
+        Circle w2 = new Circle(20,col);
+        w2.setStroke(col);
         grid.add(w2, column, row);
         
         GridPane.setMargin(w2,new Insets(5));
@@ -146,6 +147,19 @@ public class GameBoard implements ClickGenerator, UpdtListener{
 
     @Override
     public void updated(CustomEvent e) {
+//        char[][] grid = (char[][])e.getSource();
+//        for (int i = 0; i < 8; i++) {
+//            for (int j = 0; j < 8; j++) {
+//                if (grid[i][j]== 'B'){
+//                    placeMarker(i,j,Color.BLACK);
+//                }
+//                else if (grid[i][j]== 'W'){
+//                    placeMarker(i,j,Color.WHITE); 
+//                }
+//            }
+//        }
+//        
+        
         Pair<Pair<Integer, Integer>,Character> test = (Pair)e.getSource();
         if(test.getValue() == 'B'){
             placeMarker(test.getKey().getKey(),test.getKey().getValue(),Color.BLACK);

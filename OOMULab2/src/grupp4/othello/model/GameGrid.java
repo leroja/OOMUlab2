@@ -113,6 +113,7 @@ public class GameGrid implements UpdtGen{
         
         if(availableMove(row,column,markörID)){
             uppdateWithMove(row,column,markörID);
+            //listener.updated(new CustomEvent(grid));
         }
         else
             throw new InvalidMoveException();
