@@ -12,13 +12,13 @@ import grupp4.othello.model.exception.InvalidMoveException;
 import grupp4.othello.view.*;
 import javafx.stage.Stage;
 import javafx.util.Pair;
-
+import grupp4.othello.controller.NewGameListener;
 /**
  *  
  * @author Lennart
  */
 
-public class GameManager implements Runnable {
+public class GameManager implements Runnable,NewGameListener {
     Player player1, player2;
     Stage stage;
     GameGrid grid;
@@ -105,7 +105,8 @@ public class GameManager implements Runnable {
     public void initGame(Stage stage){
         GameFrame dd = new GameFrame(stage); 
         dd.addli(player1);
-   //   dd.addli(player2);
+        dd.addli(player2);
+        dd.addListener(this);
         GameGrid grid = new GameGrid();
         grid.addUpdtListener(dd.getBoard());
         dd.addListener(grid);
@@ -118,5 +119,11 @@ public class GameManager implements Runnable {
     @Override
     public void run() {
         othelloManager();
+    }
+
+    @Override
+    public void newGame(CustomEvent e) {
+       System.out.println("java");
+       activePlayer = player1;
     }
 }
