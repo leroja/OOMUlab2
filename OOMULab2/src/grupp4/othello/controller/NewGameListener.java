@@ -12,5 +12,9 @@ import java.util.EventListener;
  * @author Lennart
  */
 public interface NewGameListener extends EventListener{
+    /**
+     * 
+     * @param e 
+     */
     void newGame(CustomEvent e);
 }

@@ -12,5 +12,9 @@ import java.util.EventListener;
  * @author Lennart
  */
 public interface UpdtListener extends EventListener{
+    /**
+     * 
+     * @param e 
+     */
     void updated(CustomEvent e);
 }

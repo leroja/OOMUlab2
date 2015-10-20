@@ -12,5 +12,9 @@ import java.util.EventListener;
  * @author Lennart
  */
 public interface ClickListener extends EventListener{
+    /**
+     * 
+     * @param e 
+     */
     void HumanClicked(CustomEvent e);
 }

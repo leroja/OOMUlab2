@@ -15,6 +15,9 @@ import javafx.stage.Stage;
  */
 public class InvalidMoveDialog {
     
+    /**
+     * 
+     */
     public void DisplayInvalidMoveDialog(){
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Invalid Move!!!");

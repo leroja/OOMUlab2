@@ -12,6 +12,10 @@ import java.util.EventObject;
  * @author Lennart
  */
 public class CustomEvent extends EventObject {
+    /**
+     * 
+     * @param source 
+     */
     public CustomEvent(Object source) {
         super(source);
     }

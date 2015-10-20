@@ -10,5 +10,9 @@ package grupp4.othello.controller;
  * @author Lennart
  */
 public interface UpdtGen {
+    /**
+     * 
+     * @param listener 
+     */
     void addUpdtListener(UpdtListener listener);
 }

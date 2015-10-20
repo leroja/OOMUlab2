@@ -15,6 +15,10 @@ import javafx.stage.Stage;
  */
 public class DrawnDialog {
     
+    
+    /**
+     * 
+     */
     public void DisplayDrawDialog(){
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Tie!");

@@ -6,13 +6,14 @@
 package grupp4.othello.model;
 
 /**
- *
- * @author alexander
+ *  
+ * ..............................................
  */
 public class GridRow {
     int row;
     int column;
 
+    
     public int getRow() {
         return row;
     }
@@ -29,6 +30,8 @@ public class GridRow {
         this.column = column;
     }
     
+    
+
     public GridRow(int row,int column){
         this.row = row;
         this.column = column;

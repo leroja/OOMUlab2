@@ -16,11 +16,21 @@ import javafx.util.Pair;
  */
 public class ComputerPlayer extends Player {
     
+    /**
+     * 
+     * @param name
+     * @param markorID 
+     */
     public ComputerPlayer(String name, char markorID){
         this.name = name;
         this.markörID = markorID;
     }
 
+    /**
+     * 
+     * @param grid
+     * @return 
+     */
     @Override
     public GridRow getMove(GameGrid grid){
         Random rand = new Random();
@@ -32,11 +42,18 @@ public class ComputerPlayer extends Player {
         
     }
 
+    /**
+     * 
+     * @param e 
+     */
     @Override
     public void HumanClicked(CustomEvent e) {
         
     }
 
+    /**
+     * 
+     */
     @Override
     public void run() {
         

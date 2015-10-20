@@ -19,15 +19,24 @@ import javafx.util.Pair;
  */
 
 public class GameManager implements Runnable {
-    Player player1, player2;
-    Stage stage;
+    private Player player1, player2;
+    private Stage stage;
     
+    /**
+     * 
+     * @param player1
+     * @param player2
+     * @param stage 
+     */
     public GameManager(Player player1, Player player2, Stage stage){
         this.player1 = player1;
         this.player2 = player2;
         this.stage = stage;
     }
     
+    /**
+     * 
+     */
     public void othelloManager(){
         GameFrame dd = new GameFrame(stage);
         dd.addli(player1);
@@ -62,6 +71,12 @@ public class GameManager implements Runnable {
     }
 
     
+    /**
+     * 
+     * @param grid
+     * @param p1
+     * @param p2 
+     */
     private void gameOver(GameGrid grid,Player p1, Player p2){
         if(grid.isGAmeOver()){
             WinnerDialog winnerDialog = new WinnerDialog();
@@ -82,6 +97,9 @@ public class GameManager implements Runnable {
         }
     }
 
+    /**
+     * 
+     */
     @Override
     public void run() {
         othelloManager();

@@ -27,7 +27,10 @@ import javafx.util.Pair;
  */
 public class SetUpGameDialog {
     
-    
+    /**
+     * fires up a custom dialog that lets the user set the name and type of the player
+     * @return a pair that contains the name and the type of the player
+     */
     public Pair<String, String> setPlayer1(){
         
         Dialog<Pair<String, String>> dialog = new Dialog<>();
@@ -73,6 +76,10 @@ public class SetUpGameDialog {
         return new Pair<>("Player 1","Human");
     }
     
+    /**
+     * fires up a custom dialog that lets the user set the name and type of the player
+     * @return a pair that contains the name and the type of the player
+     */
     public Pair<String, String> setPlayer2(){
         
         Dialog<Pair<String, String>> dialog = new Dialog<>();

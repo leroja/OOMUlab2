@@ -10,5 +10,9 @@ package grupp4.othello.controller;
  * @author Lennart
  */
 public interface ClickGenerator {
+    /**
+     * 
+     * @param listener 
+     */
     void addListener(ClickListener listener);
 }
