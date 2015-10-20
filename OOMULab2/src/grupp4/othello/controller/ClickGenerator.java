@@ -14,5 +14,5 @@ public interface ClickGenerator {
      * 
      * @param listener 
      */
-    void addListener(ClickListener listener);
+    public void addListener(ClickListener listener);
 }

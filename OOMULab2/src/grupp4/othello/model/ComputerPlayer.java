@@ -57,12 +57,4 @@ public class ComputerPlayer extends Player {
     public void HumanClicked(CustomEvent e) {
         
     }
-
-    /**
-     * 
-     */
-    @Override
-    public void run() {
-        
-    }
 }

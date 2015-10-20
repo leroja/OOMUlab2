@@ -16,5 +16,5 @@ public interface UpdtListener extends EventListener{
      * 
      * @param e 
      */
-    void updated(CustomEvent e);
+    public void updated(CustomEvent e);
 }

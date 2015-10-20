@@ -11,7 +11,7 @@ import grupp4.othello.controller.ClickListener;
  *
  * Abstract base class of the players
  */
-public abstract class Player implements ClickListener, Runnable{
+public abstract class Player implements ClickListener{
     protected String  name;
     protected char markörID;
 

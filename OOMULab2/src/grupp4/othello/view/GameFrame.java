@@ -10,6 +10,7 @@ import grupp4.othello.controller.CustomEvent;
 import grupp4.othello.controller.NewGameGen;
 import grupp4.othello.controller.NewGameListener;
 import java.util.ArrayList;
+import javafx.application.Platform;
 import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -72,7 +73,9 @@ public class GameFrame implements NewGameGen{
     
     
     public void setCurrentPlayer(StringProperty currentPlayer){
+        Platform.runLater(()->{
         this.currentPlayer.textProperty().bind(currentPlayer);
+        });
         
     }
     
@@ -151,18 +154,7 @@ public class GameFrame implements NewGameGen{
         }
     }
     
-    /**
-     * 
-     */
-    public class NewGameEventHandler implements EventHandler<ActionEvent>{
-
-        @Override
-        public void handle(ActionEvent event){
-            System.out.println("New Game");
-     
-        }
-        
-    }
-    
 }
+    
+
 

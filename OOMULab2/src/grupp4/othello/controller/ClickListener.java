@@ -16,5 +16,5 @@ public interface ClickListener extends EventListener{
      * 
      * @param e 
      */
-    void HumanClicked(CustomEvent e);
+    public void HumanClicked(CustomEvent e);
 }

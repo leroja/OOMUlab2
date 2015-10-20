@@ -43,7 +43,7 @@ public class GameManager implements Runnable,NewGameListener {
     /**
      * 
      */
-    public void othelloManager(){
+    private void othelloManager(){
         activePlayer = player1;
         setText(activePlayer);
         while(!grid.isGAmeOver()){

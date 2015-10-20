@@ -67,10 +67,5 @@ public class HumanPlayer extends Player{
         }
         else return(false);
     }
-
-    @Override
-    public void run() {
-    
-    }
 }
 

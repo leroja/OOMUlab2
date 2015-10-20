@@ -45,7 +45,7 @@ public class GameGrid implements UpdtGen, NewGameListener{
     /**
      * Resets the grid to it's starting pos
      */
-    public void resetGrid(){
+    private void resetGrid(){
         for (int i=0;i <= 7;i++){
             for (int j = 0;j<= 7;j++){
                 grid[i][j]=0;
@@ -108,7 +108,7 @@ public class GameGrid implements UpdtGen, NewGameListener{
      * @param markörID .....
      * @return true if there is a valid move in any direction
      */
-    public boolean availableMove(int row,int column,char markörID){
+    private boolean availableMove(int row,int column,char markörID){
         if (grid[row][column]!= 0) return (false);
         if (moveCheck(row,column,1,0,markörID))return true;
         else if (moveCheck(row,column,1,1,markörID))return true;
@@ -177,7 +177,7 @@ public class GameGrid implements UpdtGen, NewGameListener{
      * @param column the column that the marker was placed at
      * @param markörID .......
      */
-    public void uppdateWithMove(int row, int column,char markörID){
+    private void uppdateWithMove(int row, int column,char markörID){
         uppdateGrid(row,column,markörID);
         int rowStart = row, columnStart = column;
         if (moveCheck(row,column,1,0,markörID)){
