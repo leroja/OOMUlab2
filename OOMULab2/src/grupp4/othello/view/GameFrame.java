@@ -8,21 +8,16 @@ package grupp4.othello.view;
 import grupp4.othello.controller.ClickListener;
 import grupp4.othello.controller.NewGameGen;
 import grupp4.othello.controller.NewGameListener;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.geometry.Insets;
-import javafx.scene.ImageCursor;
-import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -41,23 +36,18 @@ public class GameFrame implements NewGameGen{
         
         board = new GameBoard();
         border = new BorderPane();
-        VBox buttonColumn, nbrCol;
-        HBox hBox = getLetterRow();
+        VBox buttonColumn;
         buttonColumn = getVBox();
-        nbrCol = getNumberColumn();
         
         Label currentPlayer = new Label("Temp");    
         
-        
-        border.setTop(hBox);
-        border.setLeft(nbrCol);
         border.setRight(buttonColumn);
         border.setCenter(board.getGridPane());
         border.setBottom(currentPlayer);
         
-        Image image = new Image("/resources/sym57.cur");
-        ImageCursor curs = new ImageCursor(image);
-        border.setCursor(curs);
+//        Image image = new Image("/resources/sym57.cur");
+//        ImageCursor curs = new ImageCursor(image);
+//        border.setCursor(curs);s
         
         
         Scene scene = new Scene(border);
@@ -80,31 +70,6 @@ public class GameFrame implements NewGameGen{
         return board;
     }
     
-    private HBox getLetterRow(){
-        HBox hBox= new HBox();
-        
-        for(char i= 'A';i < 'I';i++){
-            StackPane square = new StackPane();
-            square.setMinSize(50, 10);
-            
-            square.getChildren().add(new Label("" + i));  
-            hBox.getChildren().add(square);
-        }
-        return hBox;
-    }
-    
-    private VBox getNumberColumn(){
-        VBox vvBox = new VBox();
-        
-        for(int i= 0;i<8;i++){
-            StackPane square = new StackPane();
-            square.setMinSize(10, 50);
-            
-            square.getChildren().add(new Label("" + i));  
-            vvBox.getChildren().add(square);
-        }
-        return vvBox;
-    }
     
     
     private VBox getVBox(){
@@ -115,7 +80,6 @@ public class GameFrame implements NewGameGen{
         nyttParti.setOnMouseClicked((MouseEvent e) -> {
             this.listener.newGame(null);
         });
-        
         
         Button avsluta = new Button("Avsluta");
         avsluta.setPrefSize(70, 35);

@@ -19,8 +19,7 @@ public class HumanPlayer extends Player{
      public HumanPlayer(String name, char markorID){
         this.name = name;
         this.markörID = markorID;
-        
-    }
+     }
      
     @Override
     public GridRow getMove(GameGrid grid){

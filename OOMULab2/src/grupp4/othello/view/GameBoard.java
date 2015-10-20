@@ -9,17 +9,14 @@ import grupp4.othello.controller.ClickGenerator;
 import grupp4.othello.controller.CustomEvent;
 import grupp4.othello.controller.ClickListener;
 import grupp4.othello.controller.UpdtListener;
+import java.util.ArrayList;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyCodeCombination;
-import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Background;
@@ -38,13 +35,12 @@ import javafx.util.Pair;
  * @author Lennart
  */
 public class GameBoard implements ClickGenerator, UpdtListener{
-    GridPane grid;
-    ClickListener list;
-    Circle[][] circles;
+    private GridPane grid;
+    private ArrayList<ClickListener>  listeners = new ArrayList<>();
+    private Circle[][] circles;
     
     
     public GameBoard(){
-        // Temp kod, ta bort
         grid = new GridPane();
         grid.setGridLinesVisible(true);
         circles = new Circle[8][8];
@@ -54,11 +50,10 @@ public class GameBoard implements ClickGenerator, UpdtListener{
                 StackPane tile= new StackPane();
                 tile.setMinSize(50, 50);
                 tile.setFocusTraversable(true);
-//                //high ligt focused node
                 tile.setOnKeyPressed((KeyEvent event) -> {
                     if(event.getCode()==KeyCode.ENTER){
                         Pair<Integer,Integer> cord = new Pair<>(GridPane.getRowIndex(tile),GridPane.getColumnIndex(tile));
-                        list.HumanClicked(new CustomEvent(cord));
+                        fireEvent(new CustomEvent(cord));
                     }
                 });
                 tile.focusedProperty().addListener(new ChangeListener<Boolean>(){
@@ -97,11 +92,8 @@ public class GameBoard implements ClickGenerator, UpdtListener{
                 for(Node node: grid.getChildren()){
                     if(node instanceof StackPane) {
                         if(node.getBoundsInParent().contains(e.getSceneX(), e.getSceneY())){
-                            //temp
                             Pair<Integer,Integer> cord = new Pair<>(GridPane.getRowIndex( node),GridPane.getColumnIndex(node));
-                            list.HumanClicked(new CustomEvent(cord));
-                            //placeMarker(GridPane.getRowIndex( node),GridPane.getColumnIndex(node), Color.BLACK);
-                            //System.out.println( "Node: " + node + " at " + GridPane.getRowIndex( node) + "/" + GridPane.getColumnIndex(node));
+                            fireEvent(new CustomEvent(cord));
                             break;
                         }
                     }
@@ -113,26 +105,18 @@ public class GameBoard implements ClickGenerator, UpdtListener{
         
     }
     
-    
-
-    
-    
     public GridPane getGridPane(){
         return grid;
     }
     
     private void setStartingPos(){
-//        placeMarker(4,3,Color.BLACK);
-//        placeMarker(3,4,Color.BLACK);
-//        placeMarker(3,3,Color.WHITE);
-//        placeMarker(4,4,Color.WHITE);
         circles[4][3].setFill(Color.BLACK);
         circles[3][4].setFill(Color.BLACK);
         circles[4][4].setFill(Color.WHITE);
         circles[3][3].setFill(Color.WHITE);
     }
     
-    public void placeMarker(int row, int column, Color col){
+    private void placeMarker(int row, int column, Color col){
         Circle w2 = new Circle(20,col);
         w2.setStroke(col);
         grid.add(w2, column, row);
@@ -140,40 +124,25 @@ public class GameBoard implements ClickGenerator, UpdtListener{
         GridPane.setMargin(w2,new Insets(5));
     }
     
-    public void onUppdateInGameGrid(char[][] grid){
-        for (int i = 0; i < 8; i++) {
-            for (int j = 0; j < 8; j++) {
-                if (grid[i][j]== 'B'){
-                    placeMarker(i,j,Color.BLACK);
-                }
-                else if (grid[i][j]== 'W'){
-                    placeMarker(i,j,Color.WHITE); 
-                }
 
-            }
+    private void fireEvent(CustomEvent e){
+        int j = listeners.size();
+        if (j == 0){
+            return;
+        }
+        for(int i = 0; i < j; i++) {
+            listeners.get(i).HumanClicked(e);
         }
     }
 
     @Override
     public void addListener(ClickListener listener) {
         
-        list = listener;
+        listeners.add( listener);
     }
 
     @Override
-    public void updated(CustomEvent e) {
-//        char[][] grid = (char[][])e.getSource();
-//        for (int i = 0; i < 8; i++) {
-//            for (int j = 0; j < 8; j++) {
-//                if (grid[i][j]== 'B'){
-//                    placeMarker(i,j,Color.BLACK);
-//                }
-//                else if (grid[i][j]== 'W'){
-//                    placeMarker(i,j,Color.WHITE); 
-//                }
-//            }
-//        }
-//        
+    public void updated(CustomEvent e) { 
         
         char[][] test = (char[][])e.getSource();
         for (int i = 0; i < 8; i++) {
@@ -188,14 +157,6 @@ public class GameBoard implements ClickGenerator, UpdtListener{
                 
             }
         }
-        
-//        Pair<Pair<Integer, Integer>,Character> test = (Pair)e.getSource();
-//        if(test.getValue() == 'B'){
-//            placeMarker(test.getKey().getKey(),test.getKey().getValue(),Color.BLACK);
-//        }else if(test.getValue() == 'W'){
-//            placeMarker(test.getKey().getKey(),test.getKey().getValue(),Color.WHITE);
-//        }
-//        
     }
 }
  

@@ -23,7 +23,6 @@ public class ComputerPlayer extends Player {
 
     @Override
     public GridRow getMove(GameGrid grid){
-        //GameGrid grid = new GameGrid();
         Random rand = new Random();
         ArrayList<GridRow> arr;
         arr = grid.getAvailableMoves(this.markörID);
