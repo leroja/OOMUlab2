@@ -104,8 +104,6 @@ public class GameFrame implements NewGameGen{
     private VBox getButtonPanel(){
         Button nyttParti = new Button("Nytt parti");
         nyttParti.setPrefSize(70,35);
-        NewGameEventHandler Game = new NewGameEventHandler();
-        //nyttParti.setOnAction(Game);
         nyttParti.setOnAction((ActionEvent e) -> {
             fireEvents(null);
         });
