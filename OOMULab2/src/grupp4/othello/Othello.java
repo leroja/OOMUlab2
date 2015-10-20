@@ -41,7 +41,9 @@ public class Othello extends Application{
         p2 = Player.setPlayer(player2.getValue(), player2.getKey(), 'B');
         
         GameManager man = new GameManager(p1, p2, stage);
-        man.othelloManager();
+        man.initGame(stage);
+        
+        new Thread(man).start();
         
 //        Thread game = new Thread(new GameManager(p1, p2, stage));
 //        game.start();

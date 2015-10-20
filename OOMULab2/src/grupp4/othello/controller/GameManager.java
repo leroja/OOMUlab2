@@ -21,6 +21,7 @@ import javafx.util.Pair;
 public class GameManager implements Runnable {
     Player player1, player2;
     Stage stage;
+    GameGrid grid;
     
     public GameManager(Player player1, Player player2, Stage stage){
         this.player1 = player1;
@@ -29,36 +30,30 @@ public class GameManager implements Runnable {
     }
     
     public void othelloManager(){
-        GameFrame dd = new GameFrame(stage);
-        dd.addli(player1);
         
-        GameGrid grid = new GameGrid();
-        grid.addUpdtListener(dd.getBoard());
-        dd.addListener(grid);
+        grid.printGameGrid();
         
-//        grid.printGameGrid();
-//        
-//        while(!grid.isGAmeOver()){
-//            try{
-//                
-//                if(grid.moreAvailableMoves(player1.getMarkörID())){
-//                    System.out.println("W");
-//                    GridRow gRP1 = player1.getMove(grid);
-//                    grid.move(gRP1.getRow(),gRP1.getColumn(),player1.getMarkörID());
-//                    grid.printGameGrid();
-//                }
-//                if(grid.moreAvailableMoves(player2.getMarkörID())){
-//                    System.out.println("B");
-//                    GridRow gRP2 = player2.getMove(grid);
-//                    grid.move(gRP2.getRow(), gRP2.getColumn(),player2.getMarkörID());
-//                    grid.printGameGrid();
-//                }
-//                gameOver(grid,player1,player2);
-//            }catch(InvalidMoveException e){
-//                System.out.println(e.getMessage());
-//                System.exit(0);
-//            }
-//        }
+        while(!grid.isGAmeOver()){
+            try{
+                
+                if(grid.moreAvailableMoves(player1.getMarkörID())){
+                    System.out.println("W");
+                    GridRow gRP1 = player1.getMove(grid);
+                    grid.move(gRP1.getRow(),gRP1.getColumn(),player1.getMarkörID());
+                    grid.printGameGrid();
+                }
+                if(grid.moreAvailableMoves(player2.getMarkörID())){
+                    System.out.println("B");
+                    GridRow gRP2 = player2.getMove(grid);
+                    grid.move(gRP2.getRow(), gRP2.getColumn(),player2.getMarkörID());
+                    grid.printGameGrid();
+                }
+                gameOver(grid,player1,player2);
+            }catch(InvalidMoveException e){
+                System.out.println(e.getMessage());
+                System.exit(0);
+            }
+        }
     }
 
     
@@ -80,6 +75,14 @@ public class GameManager implements Runnable {
                 //System.exit(0);
             }
         }
+    }
+    public void initGame(Stage stage){
+        GameFrame dd = new GameFrame(stage); 
+        dd.addli(player1);
+        GameGrid grid = new GameGrid();
+        grid.addUpdtListener(dd.getBoard());
+        dd.addListener(grid);
+        this.grid = grid;
     }
 
     @Override
