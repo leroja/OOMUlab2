@@ -58,7 +58,6 @@ public class HumanPlayer extends Player{
     public void HumanClicked(CustomEvent e) {
         Pair<Integer,Integer> cord = (Pair)e.getSource();
         gr = new GridRow(cord.getKey(),cord.getValue());
-        System.out.println(cord);
     }
     private boolean newMove(){
         if(gr.column > -1&& gr.row > -1){

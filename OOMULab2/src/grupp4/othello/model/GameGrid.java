@@ -34,7 +34,8 @@ public class GameGrid implements UpdtGen, NewGameListener{
     }
     
     /**
-     * 
+     * Checks if both players has any more moves 
+     * If no one has more moves then the game if over
      * @return true if the game is over
      */
     public boolean isGAmeOver(){
@@ -178,12 +179,15 @@ public class GameGrid implements UpdtGen, NewGameListener{
      */
     public void uppdateWithMove(int row, int column,char markörID){
         uppdateGrid(row,column,markörID);
+        int rowStart = row, columnStart = column;
         if (moveCheck(row,column,1,0,markörID)){
             while(grid[row+1][column] != markörID && grid[row][column] != 0){
                 grid[row+1][column] = markörID;
                 row = row + 1;
             }
         }
+        row = rowStart;
+        column = columnStart;
         if (moveCheck(row,column,1,1,markörID)){
             while(grid[row+1][column+1] != markörID && grid[row][column] != 0){
                 grid[row+1][column+1] = markörID;
@@ -191,12 +195,16 @@ public class GameGrid implements UpdtGen, NewGameListener{
                 column = column + 1;
             }
         }
+        row = rowStart;
+        column = columnStart;
         if (moveCheck(row,column,0,1,markörID)){
              while(grid[row][column+1] != markörID && grid[row][column] != 0){
                 grid[row][column+1] = markörID;
                 column = column + 1;
             }
         }
+        row = rowStart;
+        column = columnStart;
         if (moveCheck(row,column,-1,-1,markörID)){
              while(grid[row-1][column-1] != markörID && grid[row][column] != 0){
                 grid[row-1][column-1] = markörID;
@@ -204,6 +212,8 @@ public class GameGrid implements UpdtGen, NewGameListener{
                 column = column -1;
             }
         }
+        row = rowStart;
+        column = columnStart;
         if (moveCheck(row,column,-1,0,markörID)){
              while(grid[row - 1][column] != markörID && grid[row][column] != 0){
                 grid[row - 1][column] = markörID;
@@ -211,6 +221,8 @@ public class GameGrid implements UpdtGen, NewGameListener{
             }
             
         }
+        row = rowStart;
+        column = columnStart;
         if (moveCheck(row,column,0,-1,markörID)){
              while(grid[row][column-1] != markörID && grid[row][column] != 0){
                 grid[row][column-1] = markörID;
@@ -218,6 +230,8 @@ public class GameGrid implements UpdtGen, NewGameListener{
             }
             
         }
+        row = rowStart;
+        column = columnStart;
         if (moveCheck(row,column,-1,1,markörID)){
              while(grid[row-1][column+1] != markörID && grid[row][column] != 0){
                 grid[row-1][column+1] = markörID;
@@ -225,6 +239,8 @@ public class GameGrid implements UpdtGen, NewGameListener{
                 column = column + 1;
             }
         }
+        row = rowStart;
+        column = columnStart;
         if (moveCheck(row,column,1,-1,markörID)){
              while(grid[row+1][column-1] != markörID && grid[row][column] != 0){
                 grid[row+1][column-1] = markörID;
