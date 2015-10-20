@@ -5,6 +5,7 @@
  */
 package grupp4.othello.view;
 
+import javafx.application.Platform;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
@@ -21,6 +22,7 @@ public class WinnerDialog {
      * @param player 
      */
     public void displayWinnerDialog(String player){
+        Platform.runLater(()->{
         Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle("Winner!");
         alert.setHeaderText(null);
@@ -28,5 +30,6 @@ public class WinnerDialog {
         Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
         stage.getIcons().add(new Image(this.getClass().getResource("/resources/reversi_icon.png").toString()));
         alert.showAndWait();
+        });
     } 
 }

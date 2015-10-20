@@ -5,6 +5,7 @@
  */
 package grupp4.othello.view;
 
+import javafx.application.Platform;
 import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
@@ -20,6 +21,7 @@ public class DrawnDialog {
      * 
      */
     public void DisplayDrawDialog(){
+        Platform.runLater(()->{
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Tie!");
         alert.setHeaderText(null);
@@ -28,5 +30,6 @@ public class DrawnDialog {
         stage.getIcons().add(new Image(this.getClass().getResource("/resources/reversi_icon.png").toString()));
         
         alert.showAndWait();
+        });
     }
 }
