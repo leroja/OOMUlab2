@@ -22,6 +22,7 @@ public class GameManager implements Runnable {
     Player player1, player2;
     Stage stage;
     GameGrid grid;
+    Player activePlayer;
     
     public GameManager(Player player1, Player player2, Stage stage){
         this.player1 = player1;
@@ -30,29 +31,39 @@ public class GameManager implements Runnable {
     }
     
     public void othelloManager(){
-        
-        grid.printGameGrid();
-        
+        activePlayer = player1;
         while(!grid.isGAmeOver()){
             try{
-                
-                if(grid.moreAvailableMoves(player1.getMarkörID())){
-                    System.out.println("W");
-                    GridRow gRP1 = player1.getMove(grid);
-                    grid.move(gRP1.getRow(),gRP1.getColumn(),player1.getMarkörID());
-                    grid.printGameGrid();
+                if(grid.moreAvailableMoves(activePlayer.getMarkörID())){
+                    GridRow gr = activePlayer.getMove(grid);
+                    grid.move(gr.getRow(),gr.getColumn(),activePlayer.getMarkörID());
+                    SetActivePlayer();
                 }
-                if(grid.moreAvailableMoves(player2.getMarkörID())){
-                    System.out.println("B");
-                    GridRow gRP2 = player2.getMove(grid);
-                    grid.move(gRP2.getRow(), gRP2.getColumn(),player2.getMarkörID());
-                    grid.printGameGrid();
-                }
-                gameOver(grid,player1,player2);
+                else if(grid.moreAvailableMoves(activePlayer.getMarkörID())== false){
+                        NoMoreMovesDialog no = new NoMoreMovesDialog();
+                        no.displayNoMoreMovesDialog();
+                        SetActivePlayer();
+                    }
+                    
+                                         
+               gameOver(grid,player1,player2);
+               
             }catch(InvalidMoveException e){
-                System.out.println(e.getMessage());
-                System.exit(0);
+                InvalidMoveDialog in = new InvalidMoveDialog();
+                in.DisplayInvalidMoveDialog();
             }
+            
+        }
+    }
+    
+    private void SetActivePlayer(){
+        if (this.activePlayer == this.player1){
+            this.activePlayer = this.player2;
+           
+    }
+        else if (this.activePlayer == this.player2){
+             this.activePlayer = this.player1;
+             
         }
     }
 
@@ -79,6 +90,7 @@ public class GameManager implements Runnable {
     public void initGame(Stage stage){
         GameFrame dd = new GameFrame(stage); 
         dd.addli(player1);
+   //   dd.addli(player2);
         GameGrid grid = new GameGrid();
         grid.addUpdtListener(dd.getBoard());
         dd.addListener(grid);
