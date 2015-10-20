@@ -16,5 +16,5 @@ public interface NewGameListener extends EventListener{
      * 
      * @param e 
      */
-    void newGame(CustomEvent e);
+    public void newGame(CustomEvent e);
 }

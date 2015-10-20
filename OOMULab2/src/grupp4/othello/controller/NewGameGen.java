@@ -14,5 +14,5 @@ public interface NewGameGen {
      * 
      * @param listener 
      */
-    void addListener(NewGameListener listener);
+    public void addListener(NewGameListener listener);
 }

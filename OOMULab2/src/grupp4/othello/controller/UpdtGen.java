@@ -14,5 +14,5 @@ public interface UpdtGen {
      * 
      * @param listener 
      */
-    void addUpdtListener(UpdtListener listener);
+    public void addUpdtListener(UpdtListener listener);
 }
