@@ -23,6 +23,11 @@ public class HumanPlayer extends Player{
         this.markörID = markorID;
      }
      
+     /**
+      * 
+      * @param grid
+      * @return 
+      */
     @Override
     public GridRow getMove(GameGrid grid){
         while (true){
@@ -44,7 +49,11 @@ public class HumanPlayer extends Player{
         
         
     }    
-
+    
+    /**
+     * 
+     * @param e 
+     */
     @Override
     public void HumanClicked(CustomEvent e) {
         Pair<Integer,Integer> cord = (Pair)e.getSource();

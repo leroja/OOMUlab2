@@ -31,18 +31,22 @@ public class GameFrame implements NewGameGen{
     private Stage primaryStage;
     private NewGameListener listener;
     
+    /**
+     * 
+     * @param primaryStage 
+     */
     public GameFrame(Stage primaryStage){
         this.primaryStage = primaryStage;
         
         board = new GameBoard();
         border = new BorderPane();
         VBox buttonColumn;
-        buttonColumn = getVBox();
+        buttonColumn = getButtonPanel();
         
         Label currentPlayer = new Label("Temp");    
         
         border.setRight(buttonColumn);
-        border.setCenter(board.getGridPane());
+        border.setCenter(board.getGameBoard());
         border.setBottom(currentPlayer);
         
 //        Image image = new Image("/resources/sym57.cur");
@@ -62,17 +66,28 @@ public class GameFrame implements NewGameGen{
         
     }
     
+    /**
+     * 
+     * @param listener 
+     */
     public void addli(ClickListener listener){
         board.addListener(listener);
     }
     
+    /**
+     * 
+     * @return 
+     */
     public GameBoard getBoard(){
         return board;
     }
     
     
-    
-    private VBox getVBox(){
+    /**
+     * 
+     * @return 
+     */
+    private VBox getButtonPanel(){
         Button nyttParti = new Button("Nytt parti");
         nyttParti.setPrefSize(70,35);
         NewGameEventHandler Game = new NewGameEventHandler();
@@ -95,11 +110,17 @@ public class GameFrame implements NewGameGen{
         return(vbox);
     }
 
+    /**
+     * 
+     * @param listener 
+     */
     @Override
     public void addListener(NewGameListener listener) {
         this.listener = listener;
     }
-    
+   /**
+    * 
+    */
     public class  ExitEventHandler implements EventHandler<ActionEvent> {
   
         @Override
@@ -107,6 +128,10 @@ public class GameFrame implements NewGameGen{
             System.exit(0);
         }
     }
+    
+    /**
+     * 
+     */
     public class NewGameEventHandler implements EventHandler<ActionEvent>{
 
         @Override

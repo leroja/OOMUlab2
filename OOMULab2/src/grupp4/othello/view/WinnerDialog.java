@@ -17,6 +17,10 @@ import javafx.stage.Stage;
  */
 public class WinnerDialog {
     
+    /**
+     * 
+     * @param player 
+     */
     public void displayWinnerDialog(String player){
         Platform.runLater(()->{
         Alert alert = new Alert(AlertType.INFORMATION);

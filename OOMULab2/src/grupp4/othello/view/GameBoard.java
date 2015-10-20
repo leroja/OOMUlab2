@@ -40,6 +40,9 @@ public class GameBoard implements ClickGenerator, UpdtListener{
     private Circle[][] circles;
     
     
+    /**
+     * 
+     */
     public GameBoard(){
         grid = new GridPane();
         grid.setGridLinesVisible(true);
@@ -51,7 +54,7 @@ public class GameBoard implements ClickGenerator, UpdtListener{
                 tile.setMinSize(50, 50);
                 tile.setFocusTraversable(true);
                 tile.setOnKeyPressed((KeyEvent event) -> {
-                    if(event.getCode()==KeyCode.ENTER){
+                    if(event.getCode() == KeyCode.ENTER || event.getCode() == KeyCode.SPACE){
                         Pair<Integer,Integer> cord = new Pair<>(GridPane.getRowIndex(tile),GridPane.getColumnIndex(tile));
                         fireEvent(new CustomEvent(cord));
                     }
@@ -105,9 +108,14 @@ public class GameBoard implements ClickGenerator, UpdtListener{
         
     }
     
-    public GridPane getGridPane(){
+    /**
+     * 
+     * @return 
+     */
+    public GridPane getGameBoard(){
         return grid;
     }
+    
     
     private void setStartingPos(){
         circles[4][3].setFill(Color.BLACK);
@@ -116,15 +124,21 @@ public class GameBoard implements ClickGenerator, UpdtListener{
         circles[3][3].setFill(Color.WHITE);
     }
     
-    private void placeMarker(int row, int column, Color col){
-        Circle w2 = new Circle(20,col);
-        w2.setStroke(col);
-        grid.add(w2, column, row);
+    /**
+     * 
+     * @param row
+     * @param column
+     * @param col 
+     */
+    private void updateMarker(int row, int column, Color col){
         
-        GridPane.setMargin(w2,new Insets(5));
+        circles[row][column].setFill(col);
     }
     
-
+    /**
+     * Fires the event to all listeners
+     * @param e the information about the event
+     */
     private void fireEvent(CustomEvent e){
         int j = listeners.size();
         if (j == 0){
@@ -135,12 +149,21 @@ public class GameBoard implements ClickGenerator, UpdtListener{
         }
     }
 
+    /**
+     * Adds the listener to the listener ArrayList
+     * @param listener 
+     */
     @Override
     public void addListener(ClickListener listener) {
         
-        listeners.add( listener);
+        listeners.add(listener);
     }
 
+    
+    /**
+     * 
+     * @param e 
+     */
     @Override
     public void updated(CustomEvent e) { 
         

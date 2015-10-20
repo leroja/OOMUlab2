@@ -6,11 +6,14 @@
 package grupp4.othello.model.exception;
 
 /**
- *
- * @author alexander
+ * This exception is thrown when a player makes an invalid move
+ * 
  */
 public class InvalidMoveException extends Exception{
     
+    /**
+     * 
+     */
     public InvalidMoveException(){
         super("InvalidMoveException");
     }

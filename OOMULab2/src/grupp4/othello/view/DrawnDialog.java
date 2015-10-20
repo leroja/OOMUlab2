@@ -16,6 +16,10 @@ import javafx.stage.Stage;
  */
 public class DrawnDialog {
     
+    
+    /**
+     * 
+     */
     public void DisplayDrawDialog(){
         Platform.runLater(()->{
         Alert alert = new Alert(Alert.AlertType.INFORMATION);

@@ -24,12 +24,21 @@ public class GameManager implements Runnable {
     GameGrid grid;
     Player activePlayer;
     
+    /**
+     * 
+     * @param player1
+     * @param player2
+     * @param stage 
+     */
     public GameManager(Player player1, Player player2, Stage stage){
         this.player1 = player1;
         this.player2 = player2;
         this.stage = stage;
     }
     
+    /**
+     * 
+     */
     public void othelloManager(){
         activePlayer = player1;
         while(!grid.isGAmeOver()){
@@ -68,6 +77,12 @@ public class GameManager implements Runnable {
     }
 
     
+    /**
+     * 
+     * @param grid
+     * @param p1
+     * @param p2 
+     */
     private void gameOver(GameGrid grid,Player p1, Player p2){
         if(grid.isGAmeOver()){
             WinnerDialog winnerDialog = new WinnerDialog();
@@ -97,6 +112,9 @@ public class GameManager implements Runnable {
         this.grid = grid;
     }
 
+    /**
+     * 
+     */
     @Override
     public void run() {
         othelloManager();

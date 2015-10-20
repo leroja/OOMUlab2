@@ -25,7 +25,11 @@ import javafx.util.Pair;
  */
 public class Othello extends Application{
     
-    
+    /**
+     * 
+     * @param stage
+     * @throws Exception 
+     */
     @Override
     public void start(Stage stage) throws Exception{
         

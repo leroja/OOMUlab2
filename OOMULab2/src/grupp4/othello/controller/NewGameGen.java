@@ -10,5 +10,9 @@ package grupp4.othello.controller;
  * @author Lennart
  */
 public interface NewGameGen {
+    /**
+     * 
+     * @param listener 
+     */
     void addListener(NewGameListener listener);
 }
