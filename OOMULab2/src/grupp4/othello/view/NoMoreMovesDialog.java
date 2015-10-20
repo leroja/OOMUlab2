@@ -12,23 +12,21 @@ import javafx.stage.Stage;
 
 /**
  *
- * @author alexander
+ * @author S143192
  */
-public class InvalidMoveDialog {
+public class NoMoreMovesDialog {
+    public void displayNoMoreMovesDialog(){
+        
     
-    /**
-     * 
-     */
-    public void DisplayInvalidMoveDialog(){
-        Platform.runLater(()->{
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Invalid Move!!!");
+     Platform.runLater(()->{
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("No more moves");
         alert.setHeaderText(null);
-        alert.setContentText("Invalid move. Please redo your move." );
+        alert.setContentText("Curent Player lack moves on board." );
         Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
         stage.getIcons().add(new Image(this.getClass().getResource("/resources/reversi_icon.png").toString()));
         
         alert.showAndWait();
         });
- } 
+    }
 }
