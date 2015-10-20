@@ -30,6 +30,8 @@ public class HumanPlayer extends Player{
       */
     @Override
     public GridRow getMove(GameGrid grid){
+        gr.setRow(-1);
+        gr.setColumn(-1);
         while (true){
             try {
                 Thread.currentThread().sleep(50);
@@ -41,9 +43,9 @@ public class HumanPlayer extends Player{
             }
             
         }
-        GridRow result = new GridRow(gr.row,gr.column);
-        gr.row = -1;
-        gr.column = -1;
+        GridRow result = new GridRow(gr.getRow(),gr.getColumn());
+        gr.setRow(-1);
+        gr.setColumn(-1);
         return (result);
         
         
@@ -60,7 +62,7 @@ public class HumanPlayer extends Player{
         gr = new GridRow(cord.getKey(),cord.getValue());
     }
     private boolean newMove(){
-        if(gr.column > -1&& gr.row > -1){
+        if(gr.getColumn() > -1 && gr.getRow() > -1){
             return (true);
         }
         else return(false);

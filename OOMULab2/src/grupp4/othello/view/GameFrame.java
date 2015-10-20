@@ -6,8 +6,11 @@
 package grupp4.othello.view;
 
 import grupp4.othello.controller.ClickListener;
+import grupp4.othello.controller.CustomEvent;
 import grupp4.othello.controller.NewGameGen;
 import grupp4.othello.controller.NewGameListener;
+import java.util.ArrayList;
+import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -29,7 +32,8 @@ public class GameFrame implements NewGameGen{
     private GameBoard board;
     private BorderPane border;
     private Stage primaryStage;
-    private NewGameListener listener;
+    private ArrayList<NewGameListener> listeners = new ArrayList<>();
+    private Label currentPlayer;
     
     /**
      * 
@@ -43,7 +47,7 @@ public class GameFrame implements NewGameGen{
         VBox buttonColumn;
         buttonColumn = getButtonPanel();
         
-        Label currentPlayer = new Label("Temp");    
+        currentPlayer = new Label("Temp");    
         
         border.setRight(buttonColumn);
         border.setCenter(board.getGameBoard());
@@ -65,6 +69,13 @@ public class GameFrame implements NewGameGen{
         this.primaryStage.show();
         
     }
+    
+    
+    public void setCurrentPlayer(StringProperty currentPlayer){
+        this.currentPlayer.textProperty().bind(currentPlayer);
+        
+    }
+    
     
     /**
      * 
@@ -92,8 +103,8 @@ public class GameFrame implements NewGameGen{
         nyttParti.setPrefSize(70,35);
         NewGameEventHandler Game = new NewGameEventHandler();
         //nyttParti.setOnAction(Game);
-        nyttParti.setOnMouseClicked((MouseEvent e) -> {
-            this.listener.newGame(null);
+        nyttParti.setOnAction((ActionEvent e) -> {
+            fireEvents(null);
         });
         
         Button avsluta = new Button("Avsluta");
@@ -116,8 +127,19 @@ public class GameFrame implements NewGameGen{
      */
     @Override
     public void addListener(NewGameListener listener) {
-        this.listener = listener;
+        listeners.add(listener);
     }
+    
+    private void fireEvents(CustomEvent e){
+        int j = listeners.size();
+        if (j == 0){
+            return;
+        }
+        for(int i = 0; i < j; i++) {
+            listeners.get(i).newGame(e);
+        }
+    }
+    
    /**
     * 
     */

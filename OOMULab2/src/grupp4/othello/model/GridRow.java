@@ -10,8 +10,8 @@ package grupp4.othello.model;
  * ..............................................
  */
 public class GridRow {
-    int row;
-    int column;
+    private int row;
+    private int column;
 
     
     public int getRow() {

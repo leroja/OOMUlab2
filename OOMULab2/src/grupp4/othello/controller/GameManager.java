@@ -13,16 +13,20 @@ import grupp4.othello.view.*;
 import javafx.stage.Stage;
 import javafx.util.Pair;
 import grupp4.othello.controller.NewGameListener;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 /**
  *  
  * @author Lennart
  */
 
 public class GameManager implements Runnable,NewGameListener {
-    Player player1, player2;
-    Stage stage;
-    GameGrid grid;
-    Player activePlayer;
+    private Player player1, player2;
+    private Stage stage;
+    private GameFrame gameframe;
+    private GameGrid grid;
+    private Player activePlayer;
+    private StringProperty currentPlayer = new SimpleStringProperty("");
     
     /**
      * 
@@ -41,17 +45,18 @@ public class GameManager implements Runnable,NewGameListener {
      */
     public void othelloManager(){
         activePlayer = player1;
+        setText(activePlayer);
         while(!grid.isGAmeOver()){
             try{
                 if(grid.moreAvailableMoves(activePlayer.getMarkörID())){
                     GridRow gr = activePlayer.getMove(grid);
                     grid.move(gr.getRow(),gr.getColumn(),activePlayer.getMarkörID());
-                    SetActivePlayer();
+                    setActivePlayer();
                 }
                 else if(grid.moreAvailableMoves(activePlayer.getMarkörID())== false){
                         NoMoreMovesDialog no = new NoMoreMovesDialog();
                         no.displayNoMoreMovesDialog();
-                        SetActivePlayer();
+                        setActivePlayer();
                     }
                     
                                          
@@ -64,16 +69,20 @@ public class GameManager implements Runnable,NewGameListener {
             
         }
     }
+    private void setText(Player activePlayer){
+        this.currentPlayer = new SimpleStringProperty("Current Player: " + activePlayer.getName() + ", Marker: " + activePlayer.getMarkörID());
+        this.gameframe.setCurrentPlayer(currentPlayer);
+    }
     
-    private void SetActivePlayer(){
+    private void setActivePlayer(){
         if (this.activePlayer == this.player1){
             this.activePlayer = this.player2;
-           
-    }
+        }
         else if (this.activePlayer == this.player2){
              this.activePlayer = this.player1;
              
         }
+        setText(activePlayer);
     }
 
     
@@ -103,13 +112,13 @@ public class GameManager implements Runnable,NewGameListener {
         }
     }
     public void initGame(Stage stage){
-        GameFrame dd = new GameFrame(stage); 
-        dd.addli(player1);
-        dd.addli(player2);
-        dd.addListener(this);
+        this.gameframe = new GameFrame(stage); 
+        this.gameframe.addli(player1);
+        this.gameframe.addli(player2);
+        this.gameframe.addListener(this);
         GameGrid grid = new GameGrid();
-        grid.addUpdtListener(dd.getBoard());
-        dd.addListener(grid);
+        grid.addUpdtListener(this.gameframe.getBoard());
+        this.gameframe.addListener(grid);
         this.grid = grid;
     }
 
