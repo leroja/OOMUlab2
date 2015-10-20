@@ -11,8 +11,6 @@ import grupp4.othello.model.Player;
 import grupp4.othello.model.exception.InvalidMoveException;
 import grupp4.othello.view.*;
 import javafx.stage.Stage;
-import javafx.util.Pair;
-import grupp4.othello.controller.NewGameListener;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 /**
