@@ -44,27 +44,28 @@ public class GameManager implements Runnable,NewGameListener {
     private void othelloManager(){
         activePlayer = player1;
         setText(activePlayer);
-        while(!grid.isGAmeOver()){
-            try{
-                if(grid.moreAvailableMoves(activePlayer.getMarkörID())){
-                    GridRow gr = activePlayer.getMove(grid);
-                    grid.move(gr.getRow(),gr.getColumn(),activePlayer.getMarkörID());
-                    setActivePlayer();
-                }
-                else if(grid.moreAvailableMoves(activePlayer.getMarkörID())== false){
-                        NoMoreMovesDialog no = new NoMoreMovesDialog();
-                        no.displayNoMoreMovesDialog();
+        while(true){
+            while(!grid.isGAmeOver()){
+                try{
+                    if(grid.moreAvailableMoves(activePlayer.getMarkörID())){
+                        GridRow gr = activePlayer.getMove(grid);
+                        grid.move(gr.getRow(),gr.getColumn(),activePlayer.getMarkörID());
                         setActivePlayer();
                     }
-                    
-                                         
-               gameOver(grid,player1,player2);
-               
-            }catch(InvalidMoveException e){
-                InvalidMoveDialog in = new InvalidMoveDialog();
-                in.DisplayInvalidMoveDialog();
-            }
-            
+                    else if(!grid.moreAvailableMoves(activePlayer.getMarkörID())){
+                            NoMoreMovesDialog no = new NoMoreMovesDialog();
+                            no.displayNoMoreMovesDialog();
+                            setActivePlayer();
+                        }
+
+
+                   gameOver(grid,player1,player2);
+
+                }catch(InvalidMoveException e){
+                    InvalidMoveDialog in = new InvalidMoveDialog();
+                    in.DisplayInvalidMoveDialog();
+                }
+            } 
         }
     }
     private void setText(Player activePlayer){
@@ -96,16 +97,13 @@ public class GameManager implements Runnable,NewGameListener {
             char winner = grid.winner();
             if (winner == 'W'){
                 winnerDialog.displayWinnerDialog(p1.getName());
-                //System.exit(0);
             }
             else if(winner == 'B'){
                  winnerDialog.displayWinnerDialog(p2.getName());
-                 //System.exit(0);
             }
             else{
                 DrawnDialog draw = new DrawnDialog();
                 draw.DisplayDrawDialog();
-                //System.exit(0);
             }
         }
     }
@@ -130,7 +128,6 @@ public class GameManager implements Runnable,NewGameListener {
 
     @Override
     public void newGame(CustomEvent e) {
-       System.out.println("java");
        activePlayer = player1;
     }
 }
