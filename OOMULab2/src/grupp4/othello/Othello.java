@@ -3,9 +3,7 @@ package grupp4.othello;
 
 
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *
  */
 
 import grupp4.othello.controller.GameManager;
@@ -20,18 +18,17 @@ import javafx.stage.Stage;
 import javafx.util.Pair;
 
 /**
+ *Main class for starting the application.
  *
- * @author Lennart
  */
 public class Othello extends Application{
     
     /**
-     * 
-     * @param stage
-     * @throws Exception 
+     * The start method of the application
+     * @param stage 
      */
     @Override
-    public void start(Stage stage) throws Exception{
+    public void start(Stage stage){
         
         
         

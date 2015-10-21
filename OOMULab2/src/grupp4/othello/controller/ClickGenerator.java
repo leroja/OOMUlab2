@@ -7,7 +7,7 @@ package grupp4.othello.controller;
 
 /**
  *
- * @author Lennart
+ * 
  */
 public interface ClickGenerator {
     /**

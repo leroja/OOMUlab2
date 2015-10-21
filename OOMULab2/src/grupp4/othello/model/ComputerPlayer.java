@@ -13,15 +13,15 @@ import java.util.logging.Logger;
 import javafx.util.Pair;
 
 /**
- *
- * @author alexander
+ * Calculates the move of an computerPlayer
+ * 
  */
 public class ComputerPlayer extends Player {
     
     /**
-     * 
-     * @param name
-     * @param markorID 
+     * Constructor of an ComputerPlayer
+     * @param name sets name 
+     * @param markorID sets markörID
      */
     public ComputerPlayer(String name, char markorID){
         this.name = name;
@@ -29,8 +29,8 @@ public class ComputerPlayer extends Player {
     }
 
     /**
-     * 
-     * @param grid
+     * Calculates the move and returns it as an GridRow.
+     * @param grid for calculating next move
      * @return 
      */
     @Override
@@ -50,7 +50,7 @@ public class ComputerPlayer extends Player {
     }
 
     /**
-     * 
+     * Not in use in the ComuputerPlayer Class. In use in HumanPlayer Class.
      * @param e 
      */
     @Override

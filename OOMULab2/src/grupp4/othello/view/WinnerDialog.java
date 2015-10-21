@@ -12,13 +12,13 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 /**
- *
- * @author Lennart
+ * Class for displaying Dialog
+ * 
  */
 public class WinnerDialog {
     
     /**
-     * 
+     * Displays winner Dialog with name
      * @param player 
      */
     public void displayWinnerDialog(String player){

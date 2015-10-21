@@ -32,7 +32,7 @@ import javafx.util.Pair;
 
 /**
  *
- * @author Lennart
+ * 
  */
 public class GameBoard implements ClickGenerator, UpdtListener{
     private GridPane grid;
@@ -110,13 +110,15 @@ public class GameBoard implements ClickGenerator, UpdtListener{
     
     /**
      * 
-     * @return 
+     * @return grid
      */
     public GridPane getGameBoard(){
         return grid;
     }
     
-    
+    /**
+     * Sets starting position markers on board
+     */
     private void setStartingPos(){
         circles[4][3].setFill(Color.BLACK);
         circles[3][4].setFill(Color.BLACK);
@@ -125,7 +127,7 @@ public class GameBoard implements ClickGenerator, UpdtListener{
     }
     
     /**
-     * 
+     * Updates marker to new Color 
      * @param row
      * @param column
      * @param col 
@@ -161,7 +163,7 @@ public class GameBoard implements ClickGenerator, UpdtListener{
 
     
     /**
-     * 
+     * Uppdates GameBord after Uppdate in GameGrid
      * @param e 
      */
     @Override

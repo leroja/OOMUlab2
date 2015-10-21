@@ -26,7 +26,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
- *
+ * Class for creating and displaying gameFrame
  * @author Lennart
  */
 public class GameFrame implements NewGameGen{
@@ -37,7 +37,7 @@ public class GameFrame implements NewGameGen{
     private Label currentPlayer;
     
     /**
-     * 
+     * Constructor for GameFrame
      * @param primaryStage 
      */
     public GameFrame(Stage primaryStage){
@@ -71,7 +71,10 @@ public class GameFrame implements NewGameGen{
         
     }
     
-    
+    /**
+     * Sets CurentPlayer text till name and marker of current player.
+     * @param currentPlayer 
+     */
     public void setCurrentPlayer(StringProperty currentPlayer){
         Platform.runLater(()->{
         this.currentPlayer.textProperty().bind(currentPlayer);
@@ -98,7 +101,7 @@ public class GameFrame implements NewGameGen{
     
     
     /**
-     * 
+     * Creates button panel for gameFrame
      * @return 
      */
     private VBox getButtonPanel(){
@@ -142,7 +145,7 @@ public class GameFrame implements NewGameGen{
     }
     
    /**
-    * 
+    * EventHandler for Exit button on gameFrame
     */
     public class  ExitEventHandler implements EventHandler<ActionEvent> {
   

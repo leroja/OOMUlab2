@@ -11,13 +11,13 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 /**
- *
- * @author alexander
+ * Class For Displaying InvalidMoveDialog
+ * 
  */
 public class InvalidMoveDialog {
     
     /**
-     * 
+     *Displays InvalidMoveDialog 
      */
     public void DisplayInvalidMoveDialog(){
         Platform.runLater(()->{
