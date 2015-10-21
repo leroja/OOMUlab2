@@ -7,10 +7,6 @@ package grupp4.othello;
  */
 
 import grupp4.othello.controller.GameManager;
-import grupp4.othello.model.ComputerPlayer;
-import grupp4.othello.model.GameGrid;
-import grupp4.othello.model.GridRow;
-import grupp4.othello.model.HumanPlayer;
 import grupp4.othello.model.Player;
 import grupp4.othello.view.*;
 import javafx.application.Application;

@@ -47,12 +47,12 @@ public class GameManager implements Runnable,NewGameListener {
         while(true){
             while(!grid.isGAmeOver()){
                 try{
-                    if(grid.moreAvailableMoves(activePlayer.getMarkörID())){
+                    if(grid.moreAvailableMoves(activePlayer.getMarkorID())){
                         GridRow gr = activePlayer.getMove(grid);
-                        grid.move(gr.getRow(),gr.getColumn(),activePlayer.getMarkörID());
+                        grid.move(gr.getRow(),gr.getColumn(),activePlayer.getMarkorID());
                         setActivePlayer();
                     }
-                    else if(!grid.moreAvailableMoves(activePlayer.getMarkörID())){
+                    else if(!grid.moreAvailableMoves(activePlayer.getMarkorID())){
                             NoMoreMovesDialog no = new NoMoreMovesDialog();
                             no.displayNoMoreMovesDialog();
                             setActivePlayer();
@@ -73,7 +73,7 @@ public class GameManager implements Runnable,NewGameListener {
      * @param activePlayer For getting the name and marker of activePlayer
      */
     private void setText(Player activePlayer){
-        this.currentPlayer = new SimpleStringProperty("Current Player: " + activePlayer.getName() + ", Marker: " + activePlayer.getMarkörID());
+        this.currentPlayer = new SimpleStringProperty("Current Player: " + activePlayer.getName() + ", Marker: " + activePlayer.getMarkorID());
         this.gameframe.setCurrentPlayer(currentPlayer);
     }
     /**

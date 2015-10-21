@@ -25,7 +25,7 @@ public class HumanPlayer extends Player{
      public HumanPlayer(String name, char markorID){
          gr = new GridRow(-1,-1);
         this.name = name;
-        this.markörID = markorID;
+        this.markorID = markorID;
      }
      
      /**

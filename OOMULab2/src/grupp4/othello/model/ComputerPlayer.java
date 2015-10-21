@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.util.Pair;
 
 /**
  * Calculates the move of an computerPlayer
@@ -21,11 +20,11 @@ public class ComputerPlayer extends Player {
     /**
      * Constructor of an ComputerPlayer
      * @param name sets name 
-     * @param markorID sets markörID
+     * @param markorID sets markorID
      */
     public ComputerPlayer(String name, char markorID){
         this.name = name;
-        this.markörID = markorID;
+        this.markorID = markorID;
     }
 
     /**
@@ -37,7 +36,7 @@ public class ComputerPlayer extends Player {
     public GridRow getMove(GameGrid grid){
         Random rand = new Random();
         ArrayList<GridRow> arr;
-        arr = grid.getAvailableMoves(this.markörID);
+        arr = grid.getAvailableMoves(this.markorID);
         int size = arr.size();
         int drag = rand.nextInt(size);
         try { 
