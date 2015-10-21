@@ -26,6 +26,8 @@ public class Othello extends Application{
     @Override
     public void start(Stage stage){
         
+        
+        
         SetUpGameDialog setUp = new SetUpGameDialog();
         Pair<String, String> player1, player2;
         Player p1, p2;

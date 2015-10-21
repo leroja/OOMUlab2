@@ -42,7 +42,6 @@ public class GridRow {
         this.column = column;
     }
     
-    
     /**
      * constructor for GridRow
      * @param row

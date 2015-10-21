@@ -144,11 +144,14 @@ public class GameGrid implements UpdtGen, NewGameListener{
      * @param markorID  the "color" of the marker
      * @return true if the move in that direction is valid
      */
+    private boolean moveCheck(int row, int Column, int dRow, int dColumn, char markorID){
         int i;
         int j;
-    private boolean moveCheck(int row, int Column, int dRow, int dColumn, char markorID){
+        for (i = row + dRow, j =Column + dColumn; i >= 0 && i < 8 && j>=0 && j< 8 ; i = i + dRow, j = j + dColumn){
+            if(i == row + dRow && j == Column + dColumn && grid[i][j] == markorID) return false;
             if( grid[i][j] == 0) return (false);
             if (grid[i][j] == markorID) return (true);
+        }
         return (false);
     }
     
@@ -159,8 +162,7 @@ public class GameGrid implements UpdtGen, NewGameListener{
      * throws invalidMoveExeption
      * @param row the row that the marker was placed at
      * @param column the column that the marker was placed at
-        for (i = row + dRow, j =Column + dColumn; i >= 0 && i < 8 && j>=0 && j< 8 ; i = i + dRow, j = j + dColumn){
-            if(i == row + dRow && j == Column + dColumn && grid[i][j] == markorID) return false;
+     * @param markorID the "color" of the marker
      * @throws InvalidMoveException 
      */
     public void move(int row, int column, char markorID) throws InvalidMoveException {
@@ -179,6 +181,7 @@ public class GameGrid implements UpdtGen, NewGameListener{
      * is found method changes every other brick between the two valid bricks
      * @param row the row that the marker was placed at
      * @param column the column that the marker was placed at
+     * @param markorID the "color" of the marker
      */
     private void uppdateWithMove(int row, int column,char markorID){
         uppdateGrid(row,column,markorID);
