@@ -12,7 +12,7 @@ import javafx.util.Pair;
 
 /**
  * Class for getting the next move from an HummanPlayer
- * @author alexander
+ * 
  */
 public class HumanPlayer extends Player{
     private GridRow gr;
@@ -30,7 +30,7 @@ public class HumanPlayer extends Player{
      
      /**
       * gets Move of humanPlayer
-      * @param grid
+      * @param grid the grid is not used by this type of player
       * @return GrdRow whit move
       */
     @Override
@@ -56,8 +56,8 @@ public class HumanPlayer extends Player{
     }    
     
     /**
-     * 
-     * @param e 
+     * This is a listener function that is listening for human interaction
+     * @param e the cordinates where the humanPlayer placed a marker on the gameBoard
      */
     @Override
     public void HumanClicked(CustomEvent e) {
@@ -65,8 +65,8 @@ public class HumanPlayer extends Player{
         gr = new GridRow(cord.getKey(),cord.getValue());
     }
     /**
-     * 
-     * @return 
+     * checks if the user has made a move
+     * @return true if there is a new move
      */
     private boolean newMove(){
         if(gr.getColumn() > -1 && gr.getRow() > -1){

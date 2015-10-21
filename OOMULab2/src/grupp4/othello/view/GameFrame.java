@@ -26,7 +26,7 @@ import javafx.stage.Stage;
 
 /**
  * Class for creating and displaying gameFrame
- * @author Lennart
+ * 
  */
 public class GameFrame implements NewGameGen{
     private GameBoard board;
@@ -65,7 +65,7 @@ public class GameFrame implements NewGameGen{
     }
     
     /**
-     * Sets CurentPlayer text till name and marker of current player.
+     * Sets CurentPlayer text to name and marker of current player.
      * @param currentPlayer 
      */
     public void setCurrentPlayer(StringProperty currentPlayer){
@@ -75,7 +75,7 @@ public class GameFrame implements NewGameGen{
     }
     
     /**
-     * 
+     * an accessor method for adding listerners to the gameBoard
      * @param listener 
      */
     public void addli(ClickListener listener){
@@ -83,8 +83,8 @@ public class GameFrame implements NewGameGen{
     }
     
     /**
-     * 
-     * @return 
+     * this is a accesor funtion for adding the gamebord as a updateListener
+     * @return the gameboard
      */
     public GameBoard getBoard(){
         return board;
@@ -117,14 +117,18 @@ public class GameFrame implements NewGameGen{
     }
 
     /**
-     * 
-     * @param listener 
+     * adds listeners to the listener ArrayList
+     * @param listener the listener to be added to the listener ArrayList
      */
     @Override
     public void addListener(NewGameListener listener) {
         listeners.add(listener);
     }
     
+    /**
+     * when an event has happened this funtion notifies the listeners
+     * @param e the information that is sent to the listeners
+     */
     private void fireEvents(CustomEvent e){
         int j = listeners.size();
         if (j == 0){

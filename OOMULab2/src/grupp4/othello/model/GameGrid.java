@@ -39,7 +39,7 @@ public class GameGrid implements UpdtGen, NewGameListener{
     
     /**
      * Checks if both players has any more moves 
-     * If no one has more moves then the game if over
+     * If no one has more moves then the game is over
      * @return true if the game is over
      */
     public boolean isGAmeOver(){
@@ -47,7 +47,7 @@ public class GameGrid implements UpdtGen, NewGameListener{
     }
     
     /**
-     * Resets the grid to it's starting positions
+     * Resets the grid to its starting positions
      */
     private void resetGrid(){
         for (int i=0;i <= 7;i++){
@@ -66,7 +66,7 @@ public class GameGrid implements UpdtGen, NewGameListener{
             for (int j = 0; j < 8; j++) {
                 System.out.print(grid[i][j] + " ");
             }
-         System.out.print("\n");
+        System.out.print("\n");
         }
      }
      
@@ -109,7 +109,7 @@ public class GameGrid implements UpdtGen, NewGameListener{
      * Checks if there is a valid move in any direction
      * @param row the row that the marker was placed at
      * @param column the column that the marker was placed at
-     * @param markorID .....
+     * @param markorID the "color" of the marker
      * @return true if there is a valid move in any direction
      */
     private boolean availableMove(int row,int column,char markorID){
@@ -279,18 +279,20 @@ public class GameGrid implements UpdtGen, NewGameListener{
     }
     
     /**
-    * 
+    * this function adds a listener to the listerner ArrayList
+    * the listeners are listening for uppdates on the GameGrid
     * @param listener 
     */
     @Override
     public void addUpdtListener(UpdtListener listener) {
         this.listener = listener;
     }
+    
     /**
-     * 
-     * @param e 
+     * a listener for the newGame Event
+     * resets the grid and notifies the gameBoard
+     * @param e the information about the event
      */
-
     @Override
     public void newGame(CustomEvent e) {
         resetGrid();

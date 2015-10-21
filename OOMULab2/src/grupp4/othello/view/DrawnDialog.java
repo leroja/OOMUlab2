@@ -11,8 +11,8 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 /**
- *Class for Displaying DrawnDialog. 
- * @author Lennart
+ * Class for Displaying DrawnDialog. 
+ * 
  */
 public class DrawnDialog {
     

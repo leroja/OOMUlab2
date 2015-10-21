@@ -13,10 +13,10 @@ import grupp4.othello.view.*;
 import javafx.stage.Stage;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+
 /**
  * Controls the flow of the game.
  */
-
 public class GameManager implements Runnable,NewGameListener {
     private Player player1, player2;
     private Stage stage;

@@ -31,7 +31,7 @@ import javafx.scene.shape.Circle;
 import javafx.util.Pair;
 
 /**
- *
+ * 
  * 
  */
 public class GameBoard implements ClickGenerator, UpdtListener{
@@ -40,7 +40,10 @@ public class GameBoard implements ClickGenerator, UpdtListener{
     private Circle[][] circles;
     
     /**
-     * 
+     * Constructor of gameBoard
+     * Places all the tiles and circles
+     * And Adds the funtionality to them
+     * And sets the initial starting possitions of the markers
      */
     public GameBoard(){
         grid = new GridPane();
@@ -106,8 +109,8 @@ public class GameBoard implements ClickGenerator, UpdtListener{
     }
     
     /**
-     * 
-     * @return grid
+     * returns the gameboard as a GridPane so that the GameFrame can use it
+     * @return the Gameboard
      */
     public GridPane getGameBoard(){
         return grid;
@@ -125,7 +128,7 @@ public class GameBoard implements ClickGenerator, UpdtListener{
     
     /**
      * Updates marker to new Color 
-     * @param row
+     * @param row 
      * @param column
      * @param col 
      */

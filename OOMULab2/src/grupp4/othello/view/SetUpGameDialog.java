@@ -21,8 +21,8 @@ import javafx.util.Pair;
 
 
 /**
- *
- * @author Lennart
+ * a class that contains the functions for setting up the players
+ * 
  */
 public class SetUpGameDialog {
     
