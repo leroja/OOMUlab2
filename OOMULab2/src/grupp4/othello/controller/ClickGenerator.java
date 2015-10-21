@@ -6,12 +6,12 @@
 package grupp4.othello.controller;
 
 /**
- *
+ * interface for the classes that generates clickEvents
  * 
  */
 public interface ClickGenerator {
     /**
-     * 
+     * adds listeners that listens for clickEvents
      * @param listener 
      */
     public void addListener(ClickListener listener);

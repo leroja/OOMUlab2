@@ -6,13 +6,13 @@
 package grupp4.othello.controller;
 
 /**
- *
- * @author Lennart
+ * interface for the classes that generates UpdateEvents
+ * 
  */
 public interface UpdtGen {
     /**
-     * 
-     * @param listener 
+     * adds listeners that listens for UpdateEvents
+     * @param listener
      */
     public void addUpdtListener(UpdtListener listener);
 }

@@ -6,13 +6,13 @@
 package grupp4.othello.controller;
 
 /**
- *
- * @author Lennart
+ * interface for the classes that generates NewGameEvents
+ *  
  */
 public interface NewGameGen {
     /**
-     * 
-     * @param listener 
+     * adds listeners that listens for NewGameEvents
+     * @param listener
      */
     public void addListener(NewGameListener listener);
 }

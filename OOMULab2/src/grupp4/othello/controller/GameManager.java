@@ -123,10 +123,9 @@ public class GameManager implements Runnable,NewGameListener {
         this.gameframe.addli(player1);
         this.gameframe.addli(player2);
         this.gameframe.addListener(this);
-        GameGrid grid = new GameGrid();
-        grid.addUpdtListener(this.gameframe.getBoard());
-        this.gameframe.addListener(grid);
-        this.grid = grid;
+        this.grid = new GameGrid();
+        this.grid.addUpdtListener(this.gameframe.getBoard());
+        this.gameframe.addListener(this.grid);
     }
 
     /**

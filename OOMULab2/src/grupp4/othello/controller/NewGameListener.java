@@ -8,13 +8,13 @@ package grupp4.othello.controller;
 import java.util.EventListener;
 
 /**
- *
- * @author Lennart
+ * interface for the classes that listens for NewGameEvents
+ * 
  */
 public interface NewGameListener extends EventListener{
     /**
-     * 
-     * @param e 
+     * methods that listens for NewGameEvents
+     * @param e information about the event
      */
     public void newGame(CustomEvent e);
 }

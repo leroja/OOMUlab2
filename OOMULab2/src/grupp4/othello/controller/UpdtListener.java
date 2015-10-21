@@ -9,12 +9,12 @@ import java.util.EventListener;
 
 /**
  *
- * @author Lennart
+ * interface for the classes that listens for UpdateEvents
  */
 public interface UpdtListener extends EventListener{
     /**
-     * 
-     * @param e 
+     * methods that listens for UpdateEvents
+     * @param e information about the event
      */
     public void updated(CustomEvent e);
 }

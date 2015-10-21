@@ -1,11 +1,6 @@
 package grupp4.othello;
 
 
-
-/*
- *
- */
-
 import grupp4.othello.controller.GameManager;
 import grupp4.othello.model.Player;
 import grupp4.othello.view.*;
@@ -14,7 +9,7 @@ import javafx.stage.Stage;
 import javafx.util.Pair;
 
 /**
- *Main class for starting the application.
+ * Main class for starting the application.
  *
  */
 public class Othello extends Application{

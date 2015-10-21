@@ -8,13 +8,13 @@ package grupp4.othello.controller;
 import java.util.EventListener;
 
 /**
- *
- * @author Lennart
+ * interface for the classes that listens for ClickEvents
+ * 
  */
 public interface ClickListener extends EventListener{
     /**
-     * 
-     * @param e 
+     * methods that listens for ClickEvents
+     * @param e information about the event
      */
     public void HumanClicked(CustomEvent e);
 }
