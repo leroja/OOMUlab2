@@ -14,8 +14,7 @@ import javafx.stage.Stage;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 /**
- *  
- * @author Lennart
+ * Controls the flow of the game.
  */
 
 public class GameManager implements Runnable,NewGameListener {
@@ -27,10 +26,10 @@ public class GameManager implements Runnable,NewGameListener {
     private StringProperty currentPlayer = new SimpleStringProperty("");
     
     /**
-     * 
-     * @param player1
-     * @param player2
-     * @param stage 
+     * Constructor of the GameManager
+     * @param player1 sets Player 1
+     * @param player2 sets player 2
+     * @param stage  sets the stage
      */
     public GameManager(Player player1, Player player2, Stage stage){
         this.player1 = player1;
@@ -39,7 +38,8 @@ public class GameManager implements Runnable,NewGameListener {
     }
     
     /**
-     * 
+     * Controls the game. decides activePlayer.
+     * Displays dialogs for Invalid Move And lets the active player redo move.
      */
     private void othelloManager(){
         activePlayer = player1;
@@ -68,11 +68,17 @@ public class GameManager implements Runnable,NewGameListener {
             } 
         }
     }
+    /**
+     * Sets the ActivePlayer string On the GameFrame to the current Players name and marker.
+     * @param activePlayer For getting the name and marker of activePlayer
+     */
     private void setText(Player activePlayer){
         this.currentPlayer = new SimpleStringProperty("Current Player: " + activePlayer.getName() + ", Marker: " + activePlayer.getMarkorID());
         this.gameframe.setCurrentPlayer(currentPlayer);
     }
-    
+    /**
+     * method changes the activePlayer to next player.
+     */
     private void setActivePlayer(){
         if (this.activePlayer == this.player1){
             this.activePlayer = this.player2;
@@ -86,10 +92,10 @@ public class GameManager implements Runnable,NewGameListener {
 
     
     /**
-     * 
-     * @param grid
-     * @param p1
-     * @param p2 
+     * Check if the game is over.
+     * @param grid for checking if the game is over.
+     * @param p1 for controlling who won the game.
+     * @param p2 for controlling who won the game.
      */
     private void gameOver(GameGrid grid,Player p1, Player p2){
         if(grid.isGAmeOver()){
@@ -107,6 +113,11 @@ public class GameManager implements Runnable,NewGameListener {
             }
         }
     }
+    
+    /**
+     * initializes the game Starts the GameFrame and addsListener.
+     * @param stage 
+     */
     public void initGame(Stage stage){
         this.gameframe = new GameFrame(stage); 
         this.gameframe.addli(player1);
@@ -119,13 +130,17 @@ public class GameManager implements Runnable,NewGameListener {
     }
 
     /**
-     * 
+     * Overrides the run method in the Runnable Interface.
      */
     @Override
     public void run() {
         othelloManager();
     }
-
+    
+    /**
+     * Activates when user press the newGame button on the gameFrame.
+     * @param e 
+     */
     @Override
     public void newGame(CustomEvent e) {
        activePlayer = player1;

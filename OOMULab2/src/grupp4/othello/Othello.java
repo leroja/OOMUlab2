@@ -1,6 +1,11 @@
 package grupp4.othello;
 
 
+
+/*
+ *
+ */
+
 import grupp4.othello.controller.GameManager;
 import grupp4.othello.model.Player;
 import grupp4.othello.view.*;
@@ -9,18 +14,17 @@ import javafx.stage.Stage;
 import javafx.util.Pair;
 
 /**
+ *Main class for starting the application.
  *
- * @author Lennart
  */
 public class Othello extends Application{
     
     /**
-     * 
-     * @param stage
-     * @throws Exception 
+     * The start method of the application
+     * @param stage 
      */
     @Override
-    public void start(Stage stage) throws Exception{
+    public void start(Stage stage){
         
         SetUpGameDialog setUp = new SetUpGameDialog();
         Pair<String, String> player1, player2;

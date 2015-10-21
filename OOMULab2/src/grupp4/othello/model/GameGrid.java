@@ -13,19 +13,23 @@ import grupp4.othello.model.exception.InvalidMoveException;
 import java.util.ArrayList;
 
 /**
- * 
+ * Controls the grid of the game. has functions for check moves and check winner.
  * 
  */
 public class GameGrid implements UpdtGen, NewGameListener{
     private char[][] grid = new char[8][8];
     private UpdtListener listener;
     
-    
+    /**
+     * Constructor for the GameGrid.
+     */
     public GameGrid(){
         setStartPositions();
     }
     
-    
+    /**
+     * Sets the starting positions of reversi.
+     */
     private void setStartPositions(){
         grid[3][3]='W';
         grid[4][4]='W';
@@ -43,7 +47,7 @@ public class GameGrid implements UpdtGen, NewGameListener{
     }
     
     /**
-     * Resets the grid to it's starting pos
+     * Resets the grid to it's starting positions
      */
     private void resetGrid(){
         for (int i=0;i <= 7;i++){
@@ -68,7 +72,7 @@ public class GameGrid implements UpdtGen, NewGameListener{
      
    
     /**
-     * 
+     * Gets all possible moves.
      * @param markorID the "Color" of the player's marker
      * @return a ArrayList of all possibles moves
      */
@@ -135,29 +139,28 @@ public class GameGrid implements UpdtGen, NewGameListener{
      * Checks if there is a valid move in that direction
      * @param row the row that the marker was placed at
      * @param column the column that the marker was placed at
-     * @param dx 
-     * @param dy
-     * @param markorID 
+     * @param dRow The change in rows from the placed marker.
+     * @param dColumn the change in column from the placed marker.
+     * @param markorID  the "color" of the marker
      * @return true if the move in that direction is valid
      */
-    private boolean moveCheck(int x, int y, int dx, int dy, char markorID){
         int i;
         int j;
-        for (i = x + dx, j =y + dy; i >= 0 && i < 8 && j>=0 && j< 8 ; i = i + dx, j = j + dy){
-            if(i == x + dx && j == y + dy && grid[i][j] == markorID) return false;
+    private boolean moveCheck(int row, int Column, int dRow, int dColumn, char markorID){
             if( grid[i][j] == 0) return (false);
             if (grid[i][j] == markorID) return (true);
-        }
         return (false);
     }
     
     /**
      * Checks if the move is valid
      * if the move is valid, the 
-     * .......
+     * method Places an marker else
+     * throws invalidMoveExeption
      * @param row the row that the marker was placed at
      * @param column the column that the marker was placed at
-     * @param markorID .......
+        for (i = row + dRow, j =Column + dColumn; i >= 0 && i < 8 && j>=0 && j< 8 ; i = i + dRow, j = j + dColumn){
+            if(i == row + dRow && j == Column + dColumn && grid[i][j] == markorID) return false;
      * @throws InvalidMoveException 
      */
     public void move(int row, int column, char markorID) throws InvalidMoveException {
@@ -172,10 +175,10 @@ public class GameGrid implements UpdtGen, NewGameListener{
 
 
     /**
-     * .............
+     * Checks every direction from placed marker. if valid move
+     * is found method changes every other brick between the two valid bricks
      * @param row the row that the marker was placed at
      * @param column the column that the marker was placed at
-     * @param markorID .......
      */
     private void uppdateWithMove(int row, int column,char markorID){
         uppdateGrid(row,column,markorID);
@@ -252,7 +255,7 @@ public class GameGrid implements UpdtGen, NewGameListener{
     
     /**
      * Calculates which player who has won the game
-     * @return ..........
+     * @return B if black wins,W if White wins, D i drawn;
      */
     public char winner(){
         int black = 0;
@@ -271,11 +274,19 @@ public class GameGrid implements UpdtGen, NewGameListener{
         else if(black < white) return ('W');
         else return('D');
     }
-
+    
+    /**
+    * 
+    * @param listener 
+    */
     @Override
     public void addUpdtListener(UpdtListener listener) {
         this.listener = listener;
     }
+    /**
+     * 
+     * @param e 
+     */
 
     @Override
     public void newGame(CustomEvent e) {

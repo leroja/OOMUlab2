@@ -11,14 +11,14 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 /**
- *
+ *Class for Displaying DrawnDialog. 
  * @author Lennart
  */
 public class DrawnDialog {
     
     
     /**
-     * 
+     * Displays DrawnDialog
      */
     public void DisplayDrawDialog(){
         Platform.runLater(()->{

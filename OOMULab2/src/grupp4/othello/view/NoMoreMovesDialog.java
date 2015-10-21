@@ -11,10 +11,13 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 /**
- *
- * @author S143192
+ * Class for displaying NoMoreMovesDialog
  */
 public class NoMoreMovesDialog {
+    
+    /**
+     * Displays NoMoreMovesDialog
+     */
     public void displayNoMoreMovesDialog(){
         
         Platform.runLater(()->{
