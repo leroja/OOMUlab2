@@ -30,7 +30,7 @@ public class ComputerPlayer extends Player {
     /**
      * Calculates the move and returns it as an GridRow.
      * @param grid for calculating next move
-     * @return 
+     * @return a GridRow that contains the row and column index of the move
      */
     @Override
     public GridRow getMove(GameGrid grid){
@@ -49,8 +49,8 @@ public class ComputerPlayer extends Player {
     }
 
     /**
-     * Not in use in the ComuputerPlayer Class. In use in HumanPlayer Class.
-     * @param e 
+     * Not in used in the ComuputerPlayer Class. In use in HumanPlayer Class.
+     * @param e not used here
      */
     @Override
     public void HumanClicked(CustomEvent e) {

@@ -22,7 +22,7 @@ public class GridRow {
     }
     /**
      * Sets the value of row
-     * @param row 
+     * @param row input value for row
      */
     public void setRow(int row) {
         this.row = row;
@@ -36,7 +36,7 @@ public class GridRow {
     }
     /**
      * set value of column
-     * @param column 
+     * @param column input value for column
      */
     public void setColumn(int column) {
         this.column = column;
@@ -44,8 +44,8 @@ public class GridRow {
     
     /**
      * constructor for GridRow
-     * @param row
-     * @param column 
+     * @param row input value for row
+     * @param column input value for column
      */
     public GridRow(int row,int column){
         this.row = row;

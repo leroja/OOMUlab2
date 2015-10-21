@@ -164,7 +164,7 @@ public class GameBoard implements ClickGenerator, UpdtListener{
     
     /**
      * Uppdates GameBord after Uppdate in GameGrid
-     * @param e 
+     * @param e information about the event
      */
     @Override
     public void updated(CustomEvent e) { 

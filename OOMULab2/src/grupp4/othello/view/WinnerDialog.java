@@ -19,7 +19,7 @@ public class WinnerDialog {
     
     /**
      * Displays winner Dialog with name
-     * @param player 
+     * @param player name of the player who won the game
      */
     public void displayWinnerDialog(String player){
         Platform.runLater(()->{

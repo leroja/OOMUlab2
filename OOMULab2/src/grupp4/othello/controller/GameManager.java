@@ -125,7 +125,7 @@ public class GameManager implements Runnable,NewGameListener {
         this.gameframe.addListener(this);
         this.grid = new GameGrid();
         this.grid.addUpdtListener(this.gameframe.getBoard());
-        this.gameframe.addListener(this.grid);
+        this.gameframe.addListener(this.grid);   
     }
 
     /**
@@ -138,7 +138,7 @@ public class GameManager implements Runnable,NewGameListener {
     
     /**
      * Activates when user press the newGame button on the gameFrame.
-     * @param e 
+     * @param e information about the event
      */
     @Override
     public void newGame(CustomEvent e) {

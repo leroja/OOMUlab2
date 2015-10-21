@@ -163,7 +163,7 @@ public class GameGrid implements UpdtGen, NewGameListener{
      * @param row the row that the marker was placed at
      * @param column the column that the marker was placed at
      * @param markorID the "color" of the marker
-     * @throws InvalidMoveException 
+     * @throws InvalidMoveException is thrown when the user makes an invalid move
      */
     public void move(int row, int column, char markorID) throws InvalidMoveException {
         
@@ -281,7 +281,7 @@ public class GameGrid implements UpdtGen, NewGameListener{
     /**
     * this function adds a listener to the listerner ArrayList
     * the listeners are listening for uppdates on the GameGrid
-    * @param listener 
+    * @param listener
     */
     @Override
     public void addUpdtListener(UpdtListener listener) {
