@@ -20,7 +20,6 @@ import javafx.stage.Stage;
 import javafx.util.Pair;
 
 
-
 /**
  *
  * @author Lennart
@@ -40,10 +39,9 @@ public class SetUpGameDialog {
         Stage stage = (Stage) dialog.getDialogPane().getScene().getWindow();
         stage.getIcons().add(new Image(this.getClass().getResource("/resources/reversi_icon.png").toString()));
         dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
-
         
         GridPane grid = new GridPane();
-
+        
         grid.setHgap(10);
         grid.setVgap(10);
         grid.setPadding(new Insets(20, 150, 10, 10));
@@ -53,7 +51,6 @@ public class SetUpGameDialog {
         grid.add(name,0,4);
         grid.add(new Label("Name:"),0,3);
         grid.add(new Label("Human or Computer:"), 0, 1);
-        
         
         ObservableList choices = FXCollections.observableArrayList("Human", "Computer");
         ChoiceBox cbox = new ChoiceBox(choices);
@@ -68,7 +65,7 @@ public class SetUpGameDialog {
         }
         return null;
         });
-
+        
         Optional<Pair<String, String>> result = dialog.showAndWait();
         if (result.isPresent()) { 
             return result.get(); 
@@ -89,10 +86,9 @@ public class SetUpGameDialog {
         Stage stage = (Stage) dialog.getDialogPane().getScene().getWindow();
         stage.getIcons().add(new Image(this.getClass().getResource("/resources/reversi_icon.png").toString()));
         dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
-
         
         GridPane grid = new GridPane();
-
+        
         grid.setHgap(10);
         grid.setVgap(10);
         grid.setPadding(new Insets(20, 150, 10, 10));
@@ -102,7 +98,6 @@ public class SetUpGameDialog {
         grid.add(name,0,4);
         grid.add(new Label("Name:"),0,3);
         grid.add(new Label("Human or Computer:"), 0, 1);
-        
         
         ObservableList choices = FXCollections.observableArrayList("Human", "Computer");
         ChoiceBox cbox = new ChoiceBox(choices);
@@ -117,14 +112,11 @@ public class SetUpGameDialog {
         }
         return null;
         });
-
+        
         Optional<Pair<String, String>> result = dialog.showAndWait();
         if (result.isPresent()) { 
             return result.get(); 
         }
         return new Pair<>("Player 2","Computer");
     }
-    
-    
-    
 }

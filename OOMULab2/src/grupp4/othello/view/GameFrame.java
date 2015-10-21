@@ -47,13 +47,11 @@ public class GameFrame implements NewGameGen{
         VBox buttonColumn;
         buttonColumn = getButtonPanel();
         
-        currentPlayer = new Label("");    
+        currentPlayer = new Label("");
         
         border.setRight(buttonColumn);
         border.setCenter(board.getGameBoard());
         border.setBottom(currentPlayer);
-        
-        
         
         Scene scene = new Scene(border);
         this.primaryStage.setScene(scene);
@@ -64,7 +62,6 @@ public class GameFrame implements NewGameGen{
         this.primaryStage.sizeToScene();
         
         this.primaryStage.show();
-        
     }
     
     
@@ -72,9 +69,7 @@ public class GameFrame implements NewGameGen{
         Platform.runLater(()->{
             this.currentPlayer.textProperty().bind(currentPlayer);
         });
-        
     }
-    
     
     /**
      * 

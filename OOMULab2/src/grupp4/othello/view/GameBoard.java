@@ -39,7 +39,6 @@ public class GameBoard implements ClickGenerator, UpdtListener{
     private ArrayList<ClickListener>  listeners = new ArrayList<>();
     private Circle[][] circles;
     
-    
     /**
      * 
      */
@@ -103,9 +102,7 @@ public class GameBoard implements ClickGenerator, UpdtListener{
                 }
             }
         });
-        
-        
-        
+    
     }
     
     /**
@@ -177,7 +174,6 @@ public class GameBoard implements ClickGenerator, UpdtListener{
                 }else if(test[i][j] == 0){
                     circles[i][j].setFill(Color.TRANSPARENT);
                 }
-                
             }
         }
     }

@@ -17,8 +17,7 @@ import javafx.stage.Stage;
 public class NoMoreMovesDialog {
     public void displayNoMoreMovesDialog(){
         
-    
-     Platform.runLater(()->{
+        Platform.runLater(()->{
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("No more moves");
         alert.setHeaderText(null);

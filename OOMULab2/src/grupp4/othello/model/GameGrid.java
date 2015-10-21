@@ -69,14 +69,14 @@ public class GameGrid implements UpdtGen, NewGameListener{
    
     /**
      * 
-     * @param markörID the "Color" of the player's marker
+     * @param markorID the "Color" of the player's marker
      * @return a ArrayList of all possibles moves
      */
-    public ArrayList<GridRow> getAvailableMoves(char markörID){
+    public ArrayList<GridRow> getAvailableMoves(char markorID){
         ArrayList<GridRow> arr = new ArrayList<>();
         for(int i = 0;i < 8;i++){
             for(int j =0; j < 8;j++){
-                if(availableMove(i,j,markörID)){
+                if(availableMove(i,j,markorID)){
                     GridRow pair = new GridRow(i,j);
                     arr.add(pair);
                 }   
@@ -87,13 +87,13 @@ public class GameGrid implements UpdtGen, NewGameListener{
     
     /**
      * Checks if the player can do any more moves
-     * @param markörID the "color" of the player's marker
+     * @param markorID the "color" of the player's marker
      * @return true if the player can do more moves
      */
-    public boolean moreAvailableMoves(char markörID){
+    public boolean moreAvailableMoves(char markorID){
         for(int i = 0;i < 8;i++){
             for(int j =0; j < 8;j++){
-                if(availableMove(i,j,markörID)){
+                if(availableMove(i,j,markorID)){
                     return true;
                 }   
             }
@@ -105,19 +105,19 @@ public class GameGrid implements UpdtGen, NewGameListener{
      * Checks if there is a valid move in any direction
      * @param row the row that the marker was placed at
      * @param column the column that the marker was placed at
-     * @param markörID .....
+     * @param markorID .....
      * @return true if there is a valid move in any direction
      */
-    private boolean availableMove(int row,int column,char markörID){
+    private boolean availableMove(int row,int column,char markorID){
         if (grid[row][column]!= 0) return (false);
-        if (moveCheck(row,column,1,0,markörID))return true;
-        else if (moveCheck(row,column,1,1,markörID))return true;
-        else if (moveCheck(row,column,0,1,markörID))return true;
-        else if (moveCheck(row,column,-1,-1,markörID))return true;
-        else if (moveCheck(row,column,-1,0,markörID))return true;
-        else if (moveCheck(row,column,0,-1,markörID))return true;
-        else if (moveCheck(row,column,-1,1,markörID))return true;
-        else if (moveCheck(row,column,1,-1,markörID))return true;
+        if (moveCheck(row,column,1,0,markorID))return true;
+        else if (moveCheck(row,column,1,1,markorID))return true;
+        else if (moveCheck(row,column,0,1,markorID))return true;
+        else if (moveCheck(row,column,-1,-1,markorID))return true;
+        else if (moveCheck(row,column,-1,0,markorID))return true;
+        else if (moveCheck(row,column,0,-1,markorID))return true;
+        else if (moveCheck(row,column,-1,1,markorID))return true;
+        else if (moveCheck(row,column,1,-1,markorID))return true;
         else return (false);
     }    
     
@@ -125,10 +125,10 @@ public class GameGrid implements UpdtGen, NewGameListener{
      * Places a marker at the spescified location
      * @param row the row that the marker is to be placed at
      * @param column the column that the marker is to be placed at
-     * @param markörID the "color" of the marker
+     * @param markorID the "color" of the marker
      */
-    private void uppdateGrid(int row,int column, char markörID){
-        grid[row][column] = markörID;
+    private void uppdateGrid(int row,int column, char markorID){
+        grid[row][column] = markorID;
     }
     
     /**
@@ -137,16 +137,16 @@ public class GameGrid implements UpdtGen, NewGameListener{
      * @param column the column that the marker was placed at
      * @param dx 
      * @param dy
-     * @param markörID 
+     * @param markorID 
      * @return true if the move in that direction is valid
      */
-    private boolean moveCheck(int x, int y, int dx, int dy, char markörID){
+    private boolean moveCheck(int x, int y, int dx, int dy, char markorID){
         int i;
         int j;
         for (i = x + dx, j =y + dy; i >= 0 && i < 8 && j>=0 && j< 8 ; i = i + dx, j = j + dy){
-            if(i == x + dx && j == y + dy && grid[i][j] == markörID) return false;
+            if(i == x + dx && j == y + dy && grid[i][j] == markorID) return false;
             if( grid[i][j] == 0) return (false);
-            if (grid[i][j] == markörID) return (true);
+            if (grid[i][j] == markorID) return (true);
         }
         return (false);
     }
@@ -157,13 +157,13 @@ public class GameGrid implements UpdtGen, NewGameListener{
      * .......
      * @param row the row that the marker was placed at
      * @param column the column that the marker was placed at
-     * @param markörID .......
+     * @param markorID .......
      * @throws InvalidMoveException 
      */
-    public void move(int row, int column, char markörID) throws InvalidMoveException {
+    public void move(int row, int column, char markorID) throws InvalidMoveException {
         
-        if(availableMove(row,column,markörID)){
-            uppdateWithMove(row,column,markörID);
+        if(availableMove(row,column,markorID)){
+            uppdateWithMove(row,column,markorID);
             listener.updated(new CustomEvent(grid));
         }
         else
@@ -175,75 +175,75 @@ public class GameGrid implements UpdtGen, NewGameListener{
      * .............
      * @param row the row that the marker was placed at
      * @param column the column that the marker was placed at
-     * @param markörID .......
+     * @param markorID .......
      */
-    private void uppdateWithMove(int row, int column,char markörID){
-        uppdateGrid(row,column,markörID);
+    private void uppdateWithMove(int row, int column,char markorID){
+        uppdateGrid(row,column,markorID);
         int rowStart = row, columnStart = column;
-        if (moveCheck(row,column,1,0,markörID)){
-            while(grid[row+1][column] != markörID && grid[row][column] != 0){
-                grid[row+1][column] = markörID;
+        if (moveCheck(row,column,1,0,markorID)){
+            while(grid[row+1][column] != markorID && grid[row][column] != 0){
+                grid[row+1][column] = markorID;
                 row = row + 1;
             }
         }
         row = rowStart;
         column = columnStart;
-        if (moveCheck(row,column,1,1,markörID)){
-            while(grid[row+1][column+1] != markörID && grid[row][column] != 0){
-                grid[row+1][column+1] = markörID;
+        if (moveCheck(row,column,1,1,markorID)){
+            while(grid[row+1][column+1] != markorID && grid[row][column] != 0){
+                grid[row+1][column+1] = markorID;
                 row = row + 1;
                 column = column + 1;
             }
         }
         row = rowStart;
         column = columnStart;
-        if (moveCheck(row,column,0,1,markörID)){
-             while(grid[row][column+1] != markörID && grid[row][column] != 0){
-                grid[row][column+1] = markörID;
+        if (moveCheck(row,column,0,1,markorID)){
+             while(grid[row][column+1] != markorID && grid[row][column] != 0){
+                grid[row][column+1] = markorID;
                 column = column + 1;
             }
         }
         row = rowStart;
         column = columnStart;
-        if (moveCheck(row,column,-1,-1,markörID)){
-             while(grid[row-1][column-1] != markörID && grid[row][column] != 0){
-                grid[row-1][column-1] = markörID;
+        if (moveCheck(row,column,-1,-1,markorID)){
+             while(grid[row-1][column-1] != markorID && grid[row][column] != 0){
+                grid[row-1][column-1] = markorID;
                 row = row -  1;
                 column = column -1;
             }
         }
         row = rowStart;
         column = columnStart;
-        if (moveCheck(row,column,-1,0,markörID)){
-             while(grid[row - 1][column] != markörID && grid[row][column] != 0){
-                grid[row - 1][column] = markörID;
+        if (moveCheck(row,column,-1,0,markorID)){
+             while(grid[row - 1][column] != markorID && grid[row][column] != 0){
+                grid[row - 1][column] = markorID;
                 row = row - 1;
             }
             
         }
         row = rowStart;
         column = columnStart;
-        if (moveCheck(row,column,0,-1,markörID)){
-             while(grid[row][column-1] != markörID && grid[row][column] != 0){
-                grid[row][column-1] = markörID;
+        if (moveCheck(row,column,0,-1,markorID)){
+             while(grid[row][column-1] != markorID && grid[row][column] != 0){
+                grid[row][column-1] = markorID;
                 column = column - 1;
             }
             
         }
         row = rowStart;
         column = columnStart;
-        if (moveCheck(row,column,-1,1,markörID)){
-             while(grid[row-1][column+1] != markörID && grid[row][column] != 0){
-                grid[row-1][column+1] = markörID;
+        if (moveCheck(row,column,-1,1,markorID)){
+             while(grid[row-1][column+1] != markorID && grid[row][column] != 0){
+                grid[row-1][column+1] = markorID;
                 row = row - 1;
                 column = column + 1;
             }
         }
         row = rowStart;
         column = columnStart;
-        if (moveCheck(row,column,1,-1,markörID)){
-             while(grid[row+1][column-1] != markörID && grid[row][column] != 0){
-                grid[row+1][column-1] = markörID;
+        if (moveCheck(row,column,1,-1,markorID)){
+             while(grid[row+1][column-1] != markorID && grid[row][column] != 0){
+                grid[row+1][column-1] = markorID;
                 row = row + 1;
                 column = column - 1;
             }

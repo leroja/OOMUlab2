@@ -13,7 +13,7 @@ import grupp4.othello.controller.ClickListener;
  */
 public abstract class Player implements ClickListener{
     protected String  name;
-    protected char markörID;
+    protected char markorID;
 
     public abstract GridRow getMove(GameGrid grid);
 
@@ -21,22 +21,22 @@ public abstract class Player implements ClickListener{
         return name;
     }
 
-    public char getMarkörID() {
-        return markörID;
+    public char getMarkorID() {
+        return markorID;
     }
      
     /**
      * Creates a player based on the input
      * @param type the type of player
      * @param name the name of the player
-     * @param markörID the "color" of the player's marker
+     * @param markorID the "color" of the player's marker
      * @return either a Human- or a ComputerPlayer
      */
-    public static Player setPlayer(String type, String name,char markörID){
+    public static Player setPlayer(String type, String name,char markorID){
         if ("Computer".equals(type)){
-            return new ComputerPlayer(name, markörID);
+            return new ComputerPlayer(name, markorID);
         }else{
-            return new HumanPlayer(name, markörID);
+            return new HumanPlayer(name, markorID);
         }
     }
 }
