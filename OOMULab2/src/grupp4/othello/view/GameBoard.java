@@ -31,7 +31,7 @@ import javafx.scene.shape.Circle;
 import javafx.util.Pair;
 
 /**
- * 
+ * Represents the graphical state of the game
  * 
  */
 public class GameBoard implements ClickGenerator, UpdtListener{
