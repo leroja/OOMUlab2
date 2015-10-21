@@ -20,7 +20,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -48,15 +47,12 @@ public class GameFrame implements NewGameGen{
         VBox buttonColumn;
         buttonColumn = getButtonPanel();
         
-        currentPlayer = new Label("Temp");    
+        currentPlayer = new Label("");    
         
         border.setRight(buttonColumn);
         border.setCenter(board.getGameBoard());
         border.setBottom(currentPlayer);
         
-//        Image image = new Image("/resources/sym57.cur");
-//        ImageCursor curs = new ImageCursor(image);
-//        border.setCursor(curs);s
         
         
         Scene scene = new Scene(border);
@@ -77,7 +73,7 @@ public class GameFrame implements NewGameGen{
      */
     public void setCurrentPlayer(StringProperty currentPlayer){
         Platform.runLater(()->{
-        this.currentPlayer.textProperty().bind(currentPlayer);
+            this.currentPlayer.textProperty().bind(currentPlayer);
         });
         
     }
